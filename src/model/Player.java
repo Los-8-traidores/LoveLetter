@@ -30,7 +30,7 @@ public class Player {
 		name = "NoName";
 		points = 0;
 		state = 'p';
-		Hand = new Hand();
+		hand = new Hand();
 		IsTurn = false;
 	}
 	
@@ -40,11 +40,24 @@ public class Player {
 		return points;
 	}
 	
-	public Player target() {
+//	public Player target() {
+//		
+//	}
+//	
+	public String chooseCard(int numberCard){
 		
-	}
-	
-	private Card chooseCard() {
+		if(numberCard == 1) {
+			return this.hand.getCard1();
+		}
+		else
+		{
+			return this.hand.getCard2();
+		}
+		
+		/*
+		 * Para hacer pruebas puse que el metodo sea publico, en la version final no sera asi.
+		 * Al no tener la clase Card, utilice Strings
+		 */
 		
 	}
 	
