@@ -61,5 +61,23 @@ public class Player {
 		
 	}
 	
+<<<<<<< Updated upstream
 
+=======
+
+	public void setState(char state) {
+		this.state = state;
+	}
+
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", name=" + name + ", points=" + points + ", state=" + state + ", hand="
+				+ hand.toString() + ", discards=" + discards + ", IsTurn=" + IsTurn + "]";
+	}
+	
+	private void ChangeState(char s) {
+		
+		this.setState(s);
+	}
+>>>>>>> Stashed changes
 }

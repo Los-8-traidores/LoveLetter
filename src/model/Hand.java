@@ -21,8 +21,22 @@ public class Hand {
 		return card2;
 	}
 
+<<<<<<< Updated upstream
 	
 	
 	
 
+=======
+	public void setCard2(Card card2) {
+		this.card2 = card2;
+	}
+//
+//	public Card grabCard() {
+//		// Do something
+//	}
+//
+//	public Card discardCard() {
+//		// Do something
+//	}
+>>>>>>> Stashed changes
 }
