@@ -26,10 +26,12 @@ public class Hand {
 	}
 
 	public Card grabCard() {
-		// Do something
+		// Luego cambiar, se puso hasta que se complete el méotod para que no figure como error
+		return card1; 
 	}
 
 	public Card discardCard() {
-		// Do something
+		// Luego cambiar, se puso hasta que se complete el méotod para que no figure como error
+		return card1;
 	}
 }

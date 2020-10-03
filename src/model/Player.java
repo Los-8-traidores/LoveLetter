@@ -1,14 +1,13 @@
 package model;
 
 public class Player {
-
 	protected int id;
 	private String name;
 	private int points;
 	private char state;
 	private Hand hand;
 	private int discards;
-	private boolean IsTurn;
+	private boolean isTurn;
 
 	public Player(int id, String name, int points, char state, Hand hand, int discards, boolean isTurn) {
 		this.id = id;
@@ -17,7 +16,7 @@ public class Player {
 		this.state = state;
 		this.hand = hand;
 		this.discards = discards;
-		IsTurn = isTurn;
+		isTurn = isTurn;
 	}
 
 	public Player() {
@@ -25,8 +24,8 @@ public class Player {
 		name = "NoName";
 		points = 0;
 		state = 'p';
-		IsTurn = false;
 		hand = null;
+		isTurn = false;
 	}
 
 	public int getPoints() {
@@ -43,17 +42,24 @@ public class Player {
 	}
 
 	private Card chooseCard(int numberCard) {
-
-		if (numberCard == 1)
+		if (numberCard == 1) {
 			return this.hand.getCard1();
-
-		else
+		} else {
 			return this.hand.getCard2();
+		}
+	}
+
+	public void setState(char state) {
+		this.state = state;
 	}
 
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", name=" + name + ", points=" + points + ", state=" + state + ", hand="
-				+ hand.toString() + ", discards=" + discards + ", IsTurn=" + IsTurn + "]";
+				+ hand.toString() + ", discards=" + discards + ", isTurn=" + isTurn + "]";
+	}
+
+	private void ChangeState(char s) {
+		this.setState(s);
 	}
 }
