@@ -23,8 +23,8 @@ abstract class Card {
 		return effectDescription;
 	}
 
-	public int compare(Card o) {
-		return this.strenght - o.strenght;
+	public int compare(Card card) {
+		return this.strenght - card.strenght;
 	}
 
 	abstract void effect();
