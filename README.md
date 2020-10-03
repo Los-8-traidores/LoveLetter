@@ -27,7 +27,7 @@ Los jugadores se turnan en sentido horario para jugar. En tu turno, roba una car
 ### Eliminado de la ronda
 Algunos efectos de carta te eliminan de la ronda actual. Cuando esto sucede, descarta tu mano boca arriba frente a ti y sin resolver su efecto. Hasta la siguiente ronda no podrás ser elegido para los efectos de cartas y tu turno se saltará. Como recordatorio, dale la vuelta a tu carta de Referencia para que muestre la cara con el sello roto.
 
-### Cartas jugadas y cartas descartadas
+### Cartas jugadas y cartas descartadas
 Cualquier carta jugada o descartada debe estar visible para todos los jugadores.
 
 ### Final de la ronda
