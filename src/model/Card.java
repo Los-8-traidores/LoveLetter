@@ -27,5 +27,5 @@ abstract class Card {
 		return this.strenght - o.strenght;
 	}
 
-	abstract void effect();
+	abstract void effect(); //VER, para mi se le tiene que pasar una varible Player
 }

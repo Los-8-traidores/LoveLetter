@@ -24,7 +24,7 @@ public class Player {
 		id = 0;
 		name = "NoName";
 		points = 0;
-		state = 'p';
+		state = 'a';
 		IsTurn = false;
 		hand = null;
 	}
@@ -55,5 +55,13 @@ public class Player {
 	public String toString() {
 		return "Player [id=" + id + ", name=" + name + ", points=" + points + ", state=" + state + ", hand="
 				+ hand.toString() + ", discards=" + discards + ", IsTurn=" + IsTurn + "]";
+	}
+	
+	/* Estados del player:
+	   p = protected
+	   a = inGame (alive)
+	   d = outOfGame (dead) */
+	public void changeState(char newState, Player player) {
+		player.state = newState;
 	}
 }
