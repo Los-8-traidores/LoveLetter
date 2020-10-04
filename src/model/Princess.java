@@ -8,6 +8,7 @@ public class Princess extends Card {
 	public Princess() {
 		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
 	}
+	
 
 	@Override
 	void effect() {}

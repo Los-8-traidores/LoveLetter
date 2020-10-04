@@ -10,6 +10,7 @@ abstract class Card {
 		this.name = name;
 		this.effectDescription = effectDescription;
 	}
+	
 
 	public int getStrenght() {
 		return strenght;

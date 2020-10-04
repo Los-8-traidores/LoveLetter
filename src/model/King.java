@@ -1,9 +1,12 @@
 package model;
 
 public class King extends Card {
-
-	public King(int strenght, String name, String effectDescription) {
-		super(strenght, name, effectDescription);
+	static final int STRENGHT = 6;
+ 	static final String NAME = "King";
+ 	static final String EFFECT_DESCRIPTION = "The player chooses another player and they exchange their hands";
+ 			
+	public King() {
+		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
 	}
 
 	@Override

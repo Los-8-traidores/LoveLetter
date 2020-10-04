@@ -8,6 +8,7 @@ public class Guard extends Card{
 	public Guard() {
 		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
 	}
+	
 
 	@Override
 	void effect() {
