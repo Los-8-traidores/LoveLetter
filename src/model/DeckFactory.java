@@ -1,12 +1,12 @@
 package model;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
+
 
 public class DeckFactory {
-	public List<Card> createDeck() {
+	public ArrayList<Card> createDeck() {
 		
-		List<Card> newDeck = new LinkedList<Card>();
+		ArrayList<Card> newDeck = new ArrayList<Card>();
 		
 		/*
 		 * Cantidad de cartas a crear

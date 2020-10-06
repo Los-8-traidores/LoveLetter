@@ -4,8 +4,8 @@ import java.util.*;
 
 public  class Deck {
 	
-	private List<Card>gameCards= new LinkedList<Card>();
-	private List<Card>discardedCards= new LinkedList<Card>();
+	private ArrayList<Card>gameCards= new ArrayList<Card>();
+	private ArrayList<Card>discardedCards= new ArrayList<Card>();
 	
 	
 	public Deck() {
