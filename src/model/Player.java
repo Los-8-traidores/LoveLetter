@@ -63,10 +63,6 @@ public class Player {
 				+ hand.toString() + ", discards=" + discards + ", isTurn=" + isTurn + "]";
 	}
 
-	private void ChangeState(char s) {
-		this.setState(s);
-	}
-
 	public char getState() {
 		return this.state;
 	}

@@ -30,7 +30,7 @@ abstract class Card {
 		return this.strenght - card.strenght;
 	}
 
-	abstract void effect(List<Player> players);
+	abstract void effect(Player targetPlayer);
 	
-	abstract Player target();
+	abstract Player target(List<Player> players);
 }

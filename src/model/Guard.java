@@ -1,5 +1,8 @@
 package model;
 
+import java.util.List;
+import java.util.Scanner;
+
 public class Guard extends Card{
 	static final int STRENGHT = 1;
 	static final String NAME = "Guard";
@@ -10,19 +13,41 @@ public class Guard extends Card{
 	}
 	
 	@Override
-	public Player target(){
+	public Player target(List<Player> players){
+		//IN HAY QUE CERRARLO? NO LE GUSTA NADA
+		Scanner in = new Scanner(System.in);
 		
-		List<Player> players = 
-		
-		return null; //cambiar null
+		System.out.println("Mostrando lista de jugadores disponibles");
+		for (Player player : players) {
+			if(player.getState()=='a') {
+				System.out.println(player.id);
+			}
+		}
+		int choosedId = in.nextInt();
+		for (Player player : players) {
+			if (player.id == choosedId)
+				return player;
+		}
+		in.close();		
+	
+		return null;//No encontro player!!! CAMBIAR
 	}
 	
 
 	@Override
-	void effect() {
-		
-		
-		 
+	void effect(Player playerObjective) {
+		if (playerObjective == null) {
+			return;
+		}
+		Scanner in = new Scanner(System.in);
+		//mostrarCartas(); NO MOSTRAR GUARDIA
+		int cardNumber = in.nextInt();
+		if (cardNumber == playerObjective.getHand().getCard1().getStrenght()) {
+			playerObjective.setState('d');
+			System.out.println("Lo funaste");
+		}
+		System.out.println("Le pifiaste capo."); 
+		in.close();
 	}
 
 }

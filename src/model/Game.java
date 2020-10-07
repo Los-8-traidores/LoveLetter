@@ -134,6 +134,7 @@ public class Game {
 				for (int i = 0; i < cont; i++) {
 					if (playerList.get(i).getState() == 'a') {
 						playerList.get(i).setTurn(true);
+						//this.playCard(player);
 						return;
 					}
 				}
@@ -212,8 +213,9 @@ public class Game {
 	
 	private void playCard(Player player) {
 		
-		Card inGame = player.chooseCard(numberCard);
-		inGame.effect(this.playerList);
+		Card inGameCard = player.chooseCard(1);//CAMBIAR! PARAMETRO
+		inGameCard.effect(inGameCard.target(this.playerList));
+		
 		this.checkRound();
 	}
 	
