@@ -5,7 +5,7 @@ public class Player {
 	private String name;
 	private int points;
 	private char state;
-	private Hand hand;
+	private Hand hand = new Hand(null, null);
 	private int discards;
 	private boolean isTurn;
 
@@ -16,7 +16,15 @@ public class Player {
 		this.state = state;
 		this.hand = hand;
 		this.discards = discards;
-		isTurn = isTurn;
+		this.isTurn = isTurn;
+	}
+	
+	public Player(int id, String name) {
+		this.id = id;
+		this.name = name;
+		points = 0;
+		state = 'p';
+		isTurn = false;
 	}
 
 	public Player() {
@@ -24,7 +32,7 @@ public class Player {
 		name = "NoName";
 		points = 0;
 		state = 'p';
-		hand = null;
+		//hand = null;
 		isTurn = false;
 	}
 
@@ -32,16 +40,12 @@ public class Player {
 		return points;
 	}
 
-	public String target(int cardNumber, Player p) {
-		/*
-		 * cambie el retorno (Player es el original) por un void. Necesito la class Card
-		 * para una implementacion
-		 */
-		return ("El jugador " + this.name + " utilizo la carta " + this.chooseCard(cardNumber) + " sobre " + p.name);
+	
+//	public void grabCard(Deck deck){ para la grafica ver
+//	this.hand.setCard2(Game.getCard());
+//}
 
-	}
-
-	private Card chooseCard(int numberCard) {
+	public Card chooseCard(int numberCard) {
 		if (numberCard == 1) {
 			return this.hand.getCard1();
 		} else {
@@ -62,4 +66,37 @@ public class Player {
 	private void ChangeState(char s) {
 		this.setState(s);
 	}
+
+	public char getState() {
+		return this.state;
+	}
+
+	public void setTurn(boolean b) {
+		this.isTurn = b;
+	}
+
+	public void setPoints() {
+		this.points += 1;
+	}
+
+	public Hand getHand() {
+		return this.hand;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setCard(Card card) {
+		if (hand.getCard1() == null) {
+			this.hand.setCard1(card);
+		} else {
+			this.hand.setCard2(card);
+		}
+	}
+
+	public boolean getIsTurn() {
+		return this.isTurn;
+	}
+	
 }

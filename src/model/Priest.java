@@ -1,11 +1,14 @@
 package model;
 
 public class Priest extends Card {
-	
-	public Priest(int strenght, String name, String effectDescription) {
-		super(strenght, name, effectDescription);
+	static final int STRENGHT = 2;
+ 	static final String NAME = "Priest";
+ 	static final String EFFECT_DESCRIPTION = "The player chooses another player to see the cards in his hand";
+ 			
+	public Priest() {
+		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
 	}
-
+	
 	@Override
 	void effect() {
 
