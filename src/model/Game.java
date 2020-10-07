@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import cards.Card;
+
 public class Game {
 	
 	// Atributos

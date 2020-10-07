@@ -1,5 +1,8 @@
 package model;
 
+import cards.*;
+
+
 public class Player {
 	protected int id;
 	private String name;
@@ -93,6 +96,14 @@ public class Player {
 
 	public boolean getIsTurn() {
 		return this.isTurn;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

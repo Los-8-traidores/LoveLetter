@@ -1,4 +1,8 @@
-package model;
+package cards;
+
+import java.util.List;
+
+import model.Player;
 
 public class King extends Card {
 	static final int STRENGHT = 6;
@@ -9,9 +13,14 @@ public class King extends Card {
 		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
 	}
 
-	@Override
-	void effect() {
+	public Player target(List<Player> players) {
+		//implement method
+		return null;
+	}
+	
 
+	void effect(Player player) {
+		//implement method
 	}
 
 }

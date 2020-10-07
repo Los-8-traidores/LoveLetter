@@ -1,5 +1,6 @@
-package model;
+package cards;
 
+import model.*;
 import java.util.List;
 
 public class Handmaid extends Card {

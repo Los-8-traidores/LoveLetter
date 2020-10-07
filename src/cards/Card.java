@@ -1,8 +1,9 @@
-package model;
+package cards;
 
+import model.*;
 import java.util.List;
 
-abstract class Card {
+public abstract class Card {
 	private int strenght;
 	private String name;
 	private String effectDescription;

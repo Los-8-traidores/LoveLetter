@@ -1,5 +1,7 @@
 package model;
 
+import cards.*;
+
 public class Hand {
 	private Card card1;
 	private Card card2;

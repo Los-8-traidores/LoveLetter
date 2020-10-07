@@ -2,6 +2,16 @@ package model;
 
 import java.util.ArrayList;
 
+import cards.Baron;
+import cards.Card;
+import cards.Countess;
+import cards.Guard;
+import cards.Handmaid;
+import cards.King;
+import cards.Priest;
+import cards.Prince;
+import cards.Princess;
+
 
 public class DeckFactory {
 	public Card[] createDeck() {

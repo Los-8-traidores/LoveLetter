@@ -3,6 +3,8 @@ package model;
 
 import java.util.Random;
 
+import cards.Card;
+
 public class Deck {
 	//private List<Card> gameCards; //new ArrayList<Card>(){{add(new Prince());new Prince();new Baron();new Baron();new Countess();new King();new Priest();new Priest();}};
 	public int cartasDadas = 0;
