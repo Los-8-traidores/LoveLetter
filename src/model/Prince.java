@@ -14,6 +14,6 @@ public class Prince extends Card{
 
 	@Override
 	void effect() {
-
+		
 	}
 }

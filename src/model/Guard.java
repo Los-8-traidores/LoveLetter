@@ -9,10 +9,20 @@ public class Guard extends Card{
 		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
 	}
 	
+	@Override
+	public Player target(){
+		
+		List<Player> players = 
+		
+		return null; //cambiar null
+	}
+	
 
 	@Override
 	void effect() {
-		// TODO Auto-generated method stub
+		
+		
+		 
 	}
 
 }

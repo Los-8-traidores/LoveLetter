@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 
 public class DeckFactory {
-	public ArrayList<Card> createDeck() {
+	public Card[] createDeck() {
 		
-		ArrayList<Card> newDeck = new ArrayList<Card>();
+		Card[] newDeck=  new Card[16];
 		
 		/*
 		 * Cantidad de cartas a crear
@@ -25,12 +25,12 @@ public class DeckFactory {
 		// Guardias
 		
 		for(int i=0; i<5; i++) 
-			newDeck.add(new Guard());
+			newDeck[i] = new Guard();
 		
 		//Sacerdotes
 		
-		newDeck.add(new Priest());
-		newDeck.add(new Priest());
+		newDeck[5]=new Priest();
+		newDeck[6]=new Priest();
 		
 		//Baron
 		

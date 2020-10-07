@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 abstract class Card {
 	private int strenght;
 	private String name;
@@ -28,5 +30,7 @@ abstract class Card {
 		return this.strenght - card.strenght;
 	}
 
-	abstract void effect();
+	abstract void effect(List<Player> players);
+	
+	abstract Player target();
 }
