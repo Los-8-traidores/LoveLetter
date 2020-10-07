@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class TestHandmaid {
 
 	@Test
-	void test() {
+	void testCambioState() {
 		fail("Not yet implemented");
 	}
 
