@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class Guard extends Card {
 	static final int STRENGHT = 1;
-	static final String NAME = "Guard";
-	static final String EFFECT_DESCRIPTION = "Choose another player and name a character who is not another Guard. If that player has the named character in their hand, they are eliminated from the round.";
+	static final String NAME = "Guardia";
+	static final String EFFECT_DESCRIPTION = "Elige a otro jugador y nombra un personaje que no sea otra Guardia. Si el jugador elegido tiene esa carta en la mano queda eliminado de la ronda.";
 
 	public Guard() {
 		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
@@ -19,7 +19,7 @@ public class Guard extends Card {
 
 		System.out.println("Mostrando lista de jugadores disponibles");
 		for (Player player : players) {
-			if (player.getState() == 'a') {
+			if (player.getState() == 'a' && player.getIsTurn() == false) {
 				System.out.println(player.getId());
 			}
 		}
@@ -41,13 +41,17 @@ public class Guard extends Card {
 		}
 		Scanner in = new Scanner(System.in);
 		// mostrarCartas(); NO MOSTRAR GUARDIA
+		System.out.println("Elegime el numerito amigo.");
 		int cardNumber = in.nextInt();
 		if (cardNumber == playerObjective.getHand().getCard1().getStrenght()) {
 			playerObjective.setState('d');
 			System.out.println("Lo funaste");
 		}
-		System.out.println("Le pifiaste capo.");
+		else 
+			System.out.println("Le pifiaste capo.");
+		
 		in.close();
 	}
 
 }
+
