@@ -2,6 +2,7 @@ package cards;
 
 import model.*;
 import java.util.List;
+import java.util.Scanner;
 
 public class Handmaid extends Card {
 	static final int STRENGHT = 4;
@@ -12,7 +13,7 @@ public class Handmaid extends Card {
 		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
 	}
 	
-	public Player target(List<Player> players) {
+	public Player targetOnTurn(List<Player> players) {
 		for(Player player : players) {
 			if (player.getIsTurn() == true){
 				return player;
@@ -22,8 +23,14 @@ public class Handmaid extends Card {
 		//lo dejo para evitar que me tire warnings
 	}
 	
-	@Override
-	public void effect(Player player) {
-		player.setState('p');
+	//Esto no se usa, re-pensar las declaraciones
+	public Player target(List<Player> players, Scanner in) {
+		return null;
+	}
+	
+
+	public void effect(List<Player> players) {
+		Player targetPlayer = this.targetOnTurn(players);
+		targetPlayer.setState('p');
 	}
 }

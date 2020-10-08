@@ -22,7 +22,10 @@ class TestHandmaid {
 	
 	@Test
 	void testTarget() {
-		Card cardHandmaid = new Handmaid();
+		//Guasada alert
+		Handmaid cardHandmaid = new Handmaid();
+		//Guasada ALERT! Fin
+		
 		Hand handPlayer = new Hand(cardHandmaid);
 		Player player1 = new Player(handPlayer);
 		Player player2 = new Player();
@@ -35,8 +38,7 @@ class TestHandmaid {
 		
 		player1.setTurn(true);
 		
-		assertEquals(player1, cardHandmaid.target(listPlayers));
-	
+		assertEquals(player1, cardHandmaid.targetOnTurn(listPlayers));
 	}
 
 	@Test
@@ -44,10 +46,15 @@ class TestHandmaid {
 		Card cardHandmaid = new Handmaid();
 		Hand handPlayer = new Hand(cardHandmaid);
 		Player player1 = new Player(handPlayer);
+		ArrayList<Player> listPlayers = new ArrayList<Player>();
+		
+		player1.setTurn(true);
+		listPlayers.add(player1);
+		
 		
 		assertEquals('a', player1.getState());
 		
-		cardHandmaid.effect(player1);
+		cardHandmaid.effect(listPlayers);
 
 		assertEquals('p', player1.getState());
 	}

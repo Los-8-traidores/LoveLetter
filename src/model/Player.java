@@ -38,6 +38,15 @@ public class Player {
 		state = 'a';
 		isTurn = false;
 	}
+	
+	public Player(int id, String name, Hand hand) {
+		this.id = id;
+		this.name = name;
+		points = 0;
+		state = 'a';
+		this.hand = hand;
+		isTurn = false;
+	}
 
 	public Player() {
 		id = 0;

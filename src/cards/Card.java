@@ -2,6 +2,7 @@ package cards;
 
 import model.*;
 import java.util.List;
+import java.util.Scanner;
 
 public abstract class Card {
 	private int strenght;
@@ -31,7 +32,7 @@ public abstract class Card {
 		return this.strenght - card.strenght;
 	}
 
-	public abstract void effect(Player targetPlayer);
+	public abstract void effect(List<Player> players);
 	
-	public abstract Player target(List<Player> players);
+	public abstract Player target(List<Player> players, Scanner in);
 }
