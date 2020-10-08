@@ -216,7 +216,7 @@ public class Game {
 	public void playCard(Player player) {
 		
 		Card inGameCard = player.chooseCard(1);//CAMBIAR! PARAMETRO
-		inGameCard.effect(inGameCard.target(this.playerList));
+		inGameCard.effect(this.playerList);
 		
 		this.checkRound();
 	}

@@ -14,8 +14,7 @@ public class Guard extends Card {
 		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
 	}
 
-	public Player target(List<Player> players) {
-		Scanner in = new Scanner(System.in);
+	public Player target(List<Player> players, Scanner in) {
 
 		System.out.println("Mostrando lista de jugadores disponibles");
 		for (Player player : players) {
@@ -26,25 +25,26 @@ public class Guard extends Card {
 		int choosedId = in.nextInt();
 		for (Player player : players) {
 			if (player.getId() == choosedId) {
-				in.close();
 				return player;
 			}
 		}
-		in.close();
 
 		return null;// No encontro player!!! CAMBIAR
 	}
 
-	public void effect(Player playerObjective) {
-		if (playerObjective == null) {
+	public void effect(List<Player> players) {
+		Scanner in = new Scanner(System.in);
+		Player targetPlayer = this.target(players, in);
+		if (targetPlayer == null) {
+			in.close();
 			return;
 		}
-		Scanner in = new Scanner(System.in);
+		
 		// mostrarCartas(); NO MOSTRAR GUARDIA
 		System.out.println("Elegime el numerito amigo.");
 		int cardNumber = in.nextInt();
-		if (cardNumber == playerObjective.getHand().getCard1().getStrenght()) {
-			playerObjective.setState('d');
+		if (cardNumber == targetPlayer.getHand().getCard1().getStrenght()) {
+			targetPlayer.setState('d');
 			System.out.println("Lo funaste");
 		}
 		else 

@@ -1,6 +1,7 @@
 package cards;
 
 import java.util.List;
+import java.util.Scanner;
 
 import model.Player;
 
@@ -16,13 +17,16 @@ public class Prince extends Card{
 		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
 	}
 
-	public Player target(List<Player> players) {
+	public Player target(List<Player> players, Scanner in) {
 		//implement method
 		return null;
 	}
 	
 
-	public void effect(Player player) {
+	public void effect(List<Player> players) {
+		//Scanner in = new Scanner(System.in);
+		//Player targetPlayer = this.target(players, in);
 		//implement method
+		//in.close();
 	}
 }
