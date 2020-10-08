@@ -10,6 +10,11 @@ public class Hand {
 		this.card1 = card1;
 		this.card2 = card2;
 	}
+	
+	public Hand(Card card1) {
+		this.card1 = card1;
+		this.card2 = null;
+	}
 
 	public Card getCard1() {
 		return card1;

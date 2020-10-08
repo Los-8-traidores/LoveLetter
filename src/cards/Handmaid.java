@@ -5,9 +5,8 @@ import java.util.List;
 
 public class Handmaid extends Card {
 	static final int STRENGHT = 4;
-	static final String NAME = "Handmaid";
-	static final String EFFECT_DESCRIPTION = "The player is protected and cannot be affected by other players "
-			+ "cards until his next turn";
+	static final String NAME = "Doncella";
+	static final String EFFECT_DESCRIPTION = "Los demás jugadores no pueden elegirte para los efectos de sus cartas hasta tu próximo turno.";
 	
 	public Handmaid() {
 		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
