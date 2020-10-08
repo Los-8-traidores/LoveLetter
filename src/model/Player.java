@@ -5,12 +5,12 @@ import cards.*;
 
 public class Player {
 	protected int id;
-	private String name;
-	private int points;
-	private char state;
-	private Hand hand = new Hand(null, null);
-	private int discards;
-	private boolean isTurn;
+	protected String name;
+	protected int points;
+	protected char state;
+	protected Hand hand = new Hand(null, null);
+	protected int discards;
+	protected boolean isTurn;
 
 	public Player(int id, String name, int points, char state, Hand hand, int discards, boolean isTurn) {
 		this.id = id;
@@ -22,11 +22,20 @@ public class Player {
 		this.isTurn = isTurn;
 	}
 	
+	public Player(Hand hand) {
+		id = 0;
+		name = "NoName";
+		points = 0;
+		state = 'a';
+		this.hand = hand;
+		isTurn = false;
+	}
+	
 	public Player(int id, String name) {
 		this.id = id;
 		this.name = name;
 		points = 0;
-		state = 'p';
+		state = 'a';
 		isTurn = false;
 	}
 
@@ -34,7 +43,7 @@ public class Player {
 		id = 0;
 		name = "NoName";
 		points = 0;
-		state = 'p';
+		state = 'a';
 		//hand = null;
 		isTurn = false;
 	}

@@ -14,8 +14,10 @@ class TestHandmaid {
 	void testCambioState() {
 		Game game = new Game();
 		Player player1 = new Player();
+		player1.setCard(card);
+		game.playCard(player1);
 		
-		assert.assertEquals('p', game.playCard(player1));
+		assert.assertEquals('p', player1.getState());
 	}
 
 }

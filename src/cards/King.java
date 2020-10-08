@@ -19,7 +19,7 @@ public class King extends Card {
 	}
 	
 
-	void effect(Player player) {
+	public void effect(Player player) {
 		//implement method
 	}
 

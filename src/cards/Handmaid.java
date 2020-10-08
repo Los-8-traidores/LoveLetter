@@ -24,7 +24,7 @@ public class Handmaid extends Card {
 	}
 	
 	@Override
-	void effect(Player player) {
+	public void effect(Player player) {
 		player.setState('p');
 	}
 }
