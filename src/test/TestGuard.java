@@ -11,20 +11,16 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-//DISCLAIMER!: Hay que ir corriendo de a uno los test por un tema con los Scanner y los .close();
-//No es lo mejor pero es lo que hay.
-//Preguntar de que manera se deberia testear al profe.
 class TestGuard {
 
 	@Test
 	void testCardCreation() {
 		Card cardGuard = new Guard();
 
-		assertEquals("Guardia", cardGuard.getName());
-		assertEquals(
-				"Elige a otro jugador y nombra un personaje que no sea otra Guardia. Si el jugador elegido tiene esa carta en la mano queda eliminado de la ronda.",
-				cardGuard.getEffectDescription());
-		assertEquals(1, cardGuard.getStrenght());
+		assertEquals("Guardia", cardGuard.getCardName());
+		assertEquals("Elige a otro jugador para adivinar su carta (de tipo no guardia). Si la adivinas correctamente, el jugador queda descalificado",
+				cardGuard.getCardEffectDesc());
+		assertEquals(1, cardGuard.getCardStrength());
 	}
 
 	@Test

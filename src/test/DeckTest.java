@@ -1,4 +1,4 @@
-package model;
+package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import cards.Card;
+import model.Deck;
 
 class DeckTest {
 

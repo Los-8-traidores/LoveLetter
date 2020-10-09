@@ -1,119 +1,26 @@
 package model;
 
 import cards.*;
-
+import screen.Screen;
 
 public class Player {
-	protected int id;
+	protected int id; // Pensar forma de elegir un numero random y que no se repitan entre si
 	protected String name;
-	protected int points;
-	protected char state;
-	protected Hand hand = new Hand(null, null);
-	protected int discards;
-	protected boolean isTurn;
-
-	public Player(int id, String name, int points, char state, Hand hand, int discards, boolean isTurn) {
-		this.id = id;
-		this.name = name;
-		this.points = points;
-		this.state = state;
-		this.hand = hand;
-		this.discards = discards;
-		this.isTurn = isTurn;
-	}
+	protected int points = 0;
+	protected boolean isProtected = false;
+	protected boolean isAlive = true;
+	protected Card card1 = null;
+	protected Card card2 = null;
+	protected int discards = 0;
+	protected boolean isTurn; // ver si hace falta o no
 	
-	public Player(Hand hand) {
-		id = 0;
-		name = "NoName";
-		points = 0;
-		state = 'a';
-		this.hand = hand;
-		isTurn = false;
+	public Player(Card card1) {
+		this.card1 = card1;
 	}
 	
 	public Player(int id, String name) {
 		this.id = id;
 		this.name = name;
-		points = 0;
-		state = 'a';
-		isTurn = false;
-	}
-	
-	public Player(int id, String name, Hand hand) {
-		this.id = id;
-		this.name = name;
-		points = 0;
-		state = 'a';
-		this.hand = hand;
-		isTurn = false;
-	}
-
-	public Player() {
-		id = 0;
-		name = "NoName";
-		points = 0;
-		state = 'a';
-		//hand = null;
-		isTurn = false;
-	}
-
-	public int getPoints() {
-		return points;
-	}
-
-	
-//	public void grabCard(Deck deck){ para la grafica ver
-//	this.hand.setCard2(Game.getCard());
-//}
-
-	public Card chooseCard(int numberCard) {
-		if (numberCard == 1) {
-			return this.hand.getCard1();
-		} else {
-			return this.hand.getCard2();
-		}
-	}
-
-	public void setState(char state) {
-		this.state = state;
-	}
-
-	@Override
-	public String toString() {
-		return "Player [id=" + id + ", name=" + name + ", points=" + points + ", state=" + state + ", hand="
-				+ hand.toString() + ", discards=" + discards + ", isTurn=" + isTurn + "]";
-	}
-
-	public char getState() {
-		return this.state;
-	}
-
-	public void setTurn(boolean b) {
-		this.isTurn = b;
-	}
-
-	public void setPoints() {
-		this.points += 1;
-	}
-
-	public Hand getHand() {
-		return this.hand;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-	
-	public void setCard(Card card) {
-		if (hand.getCard1() == null) {
-			this.hand.setCard1(card);
-		} else {
-			this.hand.setCard2(card);
-		}
-	}
-
-	public boolean getIsTurn() {
-		return this.isTurn;
 	}
 
 	public int getId() {
@@ -123,5 +30,88 @@ public class Player {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	public boolean isProtected() {
+		return isProtected;
+	}
+
+	public void setProtected(boolean isProtected) {
+		this.isProtected = isProtected;
+	}
+
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+
+	public Card getCard1() {
+		return card1;
+	}
+
+	public void setCard1(Card card1) {
+		this.card1 = card1;
+	}
+
+	public Card getCard2() {
+		return card2;
+	}
+
+	public void setCard2(Card card2) {
+		this.card2 = card2;
+	}
+
+	public int getDiscards() {
+		return discards;
+	}
+
+	public void setDiscards(int discards) {
+		this.discards = discards;
+	}
+
+	public boolean isTurn() {
+		return isTurn;
+	}
+
+	public void setTurn(boolean isTurn) {
+		this.isTurn = isTurn;
+	}
+
+
+	public Card chooseCard() {
+		Screen.showCards(card1, card2);
+		Card chosenCard;
+		
+		if(card1.getCardName() == Screen.enterChosenCard()) {
+			chosenCard = card1;
+			card1 = card2;
+			card2 = null;
+		}
+		else
+			chosenCard = card2;
+		
+		return chosenCard;	
+	}
+
+	public void addPoint() {
+		this.points++;
+	}
 }

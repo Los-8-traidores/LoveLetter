@@ -1,30 +1,35 @@
 package cards;
 
-import java.util.List;
-import java.util.Scanner;
-
 import model.Player;
 
-public class Baron extends Card {
-	static final int STRENGHT = 3;
-	static final String NAME = "Baron";
-	static final String EFFECT_DESCRIPTION = "The player chooses another player and the cards are "
-			+ "revealed privately. The player with the least power card is eliminated from the round";
+public class Baron implements Card {
+	protected final int strength = 3;
+	protected final String name = "Barón";
+	protected final String effectDesc = "Comparas cartas con otro jugador, el que tenga la menor queda descalificado";
+	protected final boolean needsTarget = true;
 
-	public Baron() {
-		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
+
+	@Override
+	public int getCardStrength() {
+		return strength;
 	}
 
-	public Player target(List<Player> players, Scanner in) {
-		//implement method
-		return null;
+	@Override
+	public String getCardName() {
+		return name;
 	}
-	
 
-	public void effect(List<Player> players) {
-		//Scanner in = new Scanner(System.in);
-		//Player targetPlayer = this.target(players, in);
-		//implement method
-		//in.close();
+	@Override
+	public String getCardEffectDesc() {
+		return effectDesc;
+	}
+
+	@Override
+	public boolean isNeedsTraget() {
+		return needsTarget;
+	}
+
+	public void effect(Player playerOnTurn, Player playerTarget) {
+		//Coming soon...
 	}
 }

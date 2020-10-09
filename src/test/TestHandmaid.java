@@ -14,48 +14,27 @@ class TestHandmaid {
 	void testCardCreation() {
 		Card cardHandmaid = new Handmaid();
 
-		assertEquals("Doncella", cardHandmaid.getName());
-		assertEquals("Los demás jugadores no pueden elegirte para los efectos de sus cartas hasta tu próximo turno.", cardHandmaid.getEffectDescription());
-		assertEquals(4, cardHandmaid.getStrenght());
+		assertEquals("Mucama", cardHandmaid.getCardName());
+		assertEquals("Hasta tu próximo turno, los demás jugadores no pueden aplicar los efectos de susc cartas sobre vos", cardHandmaid.getCardEffectDesc());
+		assertEquals(4, cardHandmaid.getCardStrength());
 	}
 
-	
-	@Test
-	void testTarget() {
-		//Guasada alert
-		Handmaid cardHandmaid = new Handmaid();
-		//Guasada ALERT! Fin
-		
-		Hand handPlayer = new Hand(cardHandmaid);
-		Player player1 = new Player(handPlayer);
-		Player player2 = new Player();
-		Player player3 = new Player();
-		ArrayList<Player> listPlayers = new ArrayList<Player>();
-		
-		listPlayers.add(player1);
-		listPlayers.add(player2);
-		listPlayers.add(player3);
-		
-		player1.setTurn(true);
-		
-		assertEquals(player1, cardHandmaid.targetOnTurn(listPlayers));
-	}
 
 	@Test
 	void testChangeToProtected() {
 		Card cardHandmaid = new Handmaid();
-		Hand handPlayer = new Hand(cardHandmaid);
-		Player player1 = new Player(handPlayer);
+		Player player1 = new Player(cardHandmaid);
 		ArrayList<Player> listPlayers = new ArrayList<Player>();
 		
 		player1.setTurn(true);
 		listPlayers.add(player1);
 		
 		
-		assertEquals('a', player1.getState());
+		assertEquals(false, player1.isProtected());
 		
-		cardHandmaid.effect(listPlayers);
+		cardHandmaid.effect(player1, null);
 
-		assertEquals('p', player1.getState());
+		assertEquals(true, player1.isProtected());
 	}
+	
 }
