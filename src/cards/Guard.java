@@ -1,57 +1,40 @@
 package cards;
 
 import model.*;
-import java.util.List;
+import screen.Screen;
 
-import java.util.Scanner;
-
-public class Guard extends Card {
-	static final int STRENGHT = 1;
-	static final String NAME = "Guardia";
-	static final String EFFECT_DESCRIPTION = "Elige a otro jugador y nombra un personaje que no sea otra Guardia. Si el jugador elegido tiene esa carta en la mano queda eliminado de la ronda.";
-
-	public Guard() {
-		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
+public class Guard implements Card {
+	protected final int strength = 1;
+	protected final String name = "Guardia";
+	protected final String effectDesc = "Elige a otro jugador para adivinar su carta (de tipo no guardia). Si la adivinas correctamente, el jugador queda descalificado";
+	protected final boolean needsTarget = true;
+ 			
+	@Override
+	public int getCardStrength() {
+		return strength;
 	}
 
-	public Player target(List<Player> players, Scanner in) {
-
-		System.out.println("Mostrando lista de jugadores disponibles");
-		for (Player player : players) {
-			if (player.getState() == 'a' && player.getIsTurn() == false) {
-				System.out.println(player.getId());
-			}
-		}
-		int choosedId = in.nextInt();
-		for (Player player : players) {
-			if (player.getId() == choosedId) {
-				return player;
-			}
-		}
-
-		return null;// No encontro player!!! CAMBIAR
+	@Override
+	public String getCardName() {
+		return name;
 	}
 
-	public void effect(List<Player> players) {
-		Scanner in = new Scanner(System.in);
-		Player targetPlayer = this.target(players, in);
-		if (targetPlayer == null) {
-			in.close();
-			return;
-		}
+	@Override
+	public String getCardEffectDesc() {
+		return effectDesc;
+	}
+
+	@Override
+	public boolean isNeedsTraget() {
+		return needsTarget;
+	}
+
+	public void effect(Player playerOnTurn, Player playerTarget) {
+		Screen.showAllCardsExceptGuard();
+		String chosenCard = Screen.enterChosenCard();
 		
-		// mostrarCartas(); NO MOSTRAR GUARDIA
-		System.out.println("Elegime el numerito amigo.");
-		int cardNumber = in.nextInt();
-		if (cardNumber == targetPlayer.getHand().getCard1().getStrenght()) {
-			targetPlayer.setState('d');
-			System.out.println("Lo funaste");
-		}
-		else 
-			System.out.println("Le pifiaste capo.");
-		
-		in.close();
+		if(playerTarget.getCard1().getCardName() == chosenCard)
+			playerTarget.setAlive(false);
 	}
-
 }
 

@@ -1,30 +1,34 @@
 package cards;
 
-import java.util.List;
-import java.util.Scanner;
-
 import model.Player;
 
-public class Princess extends Card {
-	static final int STRENGHT = 9;
- 	static final String NAME = "Princess";
- 	static final String EFFECT_DESCRIPTION = "If, for any reason, you play or discard the Princess, you are eliminated from the round.";
+public class Princess implements Card {
+	protected final int strength = 8;
+	protected final String name = "Princesa";
+	protected final String effectDesc = "Si descartas esta carta, quedas descalificado";
+	protected final boolean needsTarget = true;
  			
-	public Princess() {
-		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
+	@Override
+	public int getCardStrength() {
+		return strength;
 	}
-	
 
-	public Player target(List<Player> players, Scanner in) {
-		//implement method
-		return null;
+	@Override
+	public String getCardName() {
+		return name;
 	}
-	
 
-	public void effect(List<Player> players) {
-		//Scanner in = new Scanner(System.in);
-		//Player targetPlayer = this.target(players, in);
-		//implement method
-		//in.close();
+	@Override
+	public String getCardEffectDesc() {
+		return effectDesc;
+	}
+
+	@Override
+	public boolean isNeedsTraget() {
+		return needsTarget;
+	}
+
+	public void effect(Player playerOnTurn, Player playerTarget) {
+		//Coming soon...
 	}
 }

@@ -1,32 +1,34 @@
 package cards;
 
-import java.util.List;
-import java.util.Scanner;
-
 import model.Player;
 
-public class Prince extends Card{
-	static final int STRENGHT = 5;
-	static final String NAME = "Prince";
-	static final String EFFECT_DESCRIPTION = "The player chooses another player (including himself) to"
-			+ " discard his hand and draw a new card. "
-			+ "If the Princess is discarded in this way, the player who discarded her is eliminated "
-			+ "from the round.";
-
-	public Prince() {
-		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
+public class Prince implements Card{
+	protected final int strength = 5;
+	protected final String name = "Príncipe";
+	protected final String effectDesc = "Elige a otro jugador a o ti mismo para descartar la carta y levantar otra. Si la princesa es descartada, queda descalificado el jugador";
+	protected final boolean needsTarget = true;
+ 			
+	@Override
+	public int getCardStrength() {
+		return strength;
 	}
 
-	public Player target(List<Player> players, Scanner in) {
-		//implement method
-		return null;
+	@Override
+	public String getCardName() {
+		return name;
 	}
-	
 
-	public void effect(List<Player> players) {
-		//Scanner in = new Scanner(System.in);
-		//Player targetPlayer = this.target(players, in);
-		//implement method
-		//in.close();
+	@Override
+	public String getCardEffectDesc() {
+		return effectDesc;
+	}
+
+	@Override
+	public boolean isNeedsTraget() {
+		return needsTarget;
+	}
+
+	public void effect(Player playerOnTurn, Player playerTarget) {
+		//Coming soon...
 	}
 }

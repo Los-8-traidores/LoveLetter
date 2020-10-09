@@ -1,30 +1,34 @@
 package cards;
 
-import java.util.List;
-import java.util.Scanner;
-
 import model.Player;
 
-public class Countess extends Card{
-	static final int STRENGHT = 7;
- 	static final String NAME = "Countess";
- 	static final String EFFECT_DESCRIPTION = "If a player has this card and the King or Prince, "
- 			+ "this card must be played immediately";
+public class Countess implements Card{
+	protected final int strength = 7;
+	protected final String name = "Condesa";
+	protected final String effectDesc = "Descarta esta carta si tenes en tu mano al Rey o al Principe";
+	protected final boolean needsTarget = false;
  			
-	public Countess() {
-		super(STRENGHT, NAME, EFFECT_DESCRIPTION);
+	@Override
+	public int getCardStrength() {
+		return strength;
 	}
 
-	public Player target(List<Player> players, Scanner in) {
-		//implement method
-		return null;
+	@Override
+	public String getCardName() {
+		return name;
 	}
-	
 
-	public void effect(List<Player> players) {
-		//Scanner in = new Scanner(System.in);
-		//Player targetPlayer = this.target(players, in);
-		//implement method
-		//in.close();
+	@Override
+	public String getCardEffectDesc() {
+		return effectDesc;
+	}
+
+	@Override
+	public boolean isNeedsTraget() {
+		return needsTarget;
+	}
+
+	public void effect(Player playerOnTurn, Player playerTarget) {
+		//Coming soon...
 	}
 }

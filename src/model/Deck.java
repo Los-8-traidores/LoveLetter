@@ -1,45 +1,63 @@
   
 package model;
 
-import java.util.Random;
-
-import cards.Card;
+import cards.*;
 
 public class Deck {
-	//private List<Card> gameCards; //new ArrayList<Card>(){{add(new Prince());new Prince();new Baron();new Baron();new Countess();new King();new Priest();new Priest();}};
-	public int cartasDadas = 0;
-	public Card[] cards; 
+	public int dealtCards = 0;
+	public Card[] cards = new Card[16];
 	
 	
-	public Deck() {
-		DeckFactory factory = new DeckFactory();
-		this.cards = factory.createDeck();
-	}
+	public void shuffleDeck(){
+        for(int i=0; i < cards.length; i++){
+            int randomNum = (int) (Math.random() * cards.length);
+            
+            Card temp;
+            temp = cards[i];
+            cards[i] = cards[randomNum];
+            cards[randomNum] = temp;
+        }
+    }
 
+	public void fillDeck(){
+		//5 guards
+        for(int i=0; i<5; i++)
+        	cards[i] = new Guard();
 
-	public Card[] getGameCards() {
-		return cards;				//Probablemente solo necesario para pruebas
-	}
+        //2 priests
+        for(int i=5; i<7; i++)
+        	cards[i] = new Priest();
+
+        //2 Barons
+        for(int i=7; i<9; i++)
+            cards[i] = new Baron();
+
+        //2 Handmaids
+        for(int i=9; i<11; i++)
+            cards[i] = new Handmaid();
+
+        //2 princes
+        for(int i=11; i<13; i++)
+            cards[i] = new Prince();
+
+        //1 King, Countess and Princess
+        cards[13] = new King();
+        cards[14] = new Countess();
+        cards[15] = new Princess();
+    }
+	
 	
 	public void resetDeck() {
-		//Mezcla del mazo
-		cartasDadas = 0;
-		Random r = new Random();
-		for (int i=0; i<cards.length; i++) {
-            int posAleatoria = r.nextInt(cards.length);
-            Card cardTemp = cards[i];
-            cards[i] = cards[posAleatoria];
-            cards[posAleatoria] = cardTemp;
-        }
+		shuffleDeck();
+		dealtCards = 0;
 	}
 		
-	public boolean hayCartas(){
-		return cartasDadas <= cards.length;
+	public boolean notEmptyDeck(){
+		return dealtCards < cards.length;
 	}
 	
-	public Card sacarCarta(){
-		cartasDadas++;
-		return cards[cartasDadas-1];
+	public Card drawCard(){
+		return cards[dealtCards++];
 	}
 
 }
