@@ -13,14 +13,20 @@ public class Player {
 	protected Card card2 = null;
 	protected int discards = 0;
 	protected boolean isTurn; // ver si hace falta o no
-	
+
 	public Player(Card card1) {
 		this.card1 = card1;
 	}
-	
+
 	public Player(int id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	public Player(int id, String name, Card card1) {
+		this.id = id;
+		this.name = name;
+		this.card1 = card1;
 	}
 
 	public int getId() {
@@ -95,20 +101,18 @@ public class Player {
 		this.isTurn = isTurn;
 	}
 
-
 	public Card chooseCard() {
 		Screen.showCards(card1, card2);
 		Card chosenCard;
-		
-		if(card1.getCardName() == Screen.enterChosenCard()) {
+
+		if (card1.getCardName() == Screen.enterChosenCard()) {
 			chosenCard = card1;
 			card1 = card2;
 			card2 = null;
-		}
-		else
+		} else
 			chosenCard = card2;
-		
-		return chosenCard;	
+
+		return chosenCard;
 	}
 
 	public void addPoint() {

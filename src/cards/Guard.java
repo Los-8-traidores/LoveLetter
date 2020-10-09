@@ -33,7 +33,7 @@ public class Guard implements Card {
 		Screen.showAllCardsExceptGuard();
 		String chosenCard = Screen.enterChosenCard();
 		
-		if(playerTarget.getCard1().getCardName() == chosenCard)
+		if(playerTarget.getCard1().getCardName().equals(chosenCard))
 			playerTarget.setAlive(false);
 	}
 }
