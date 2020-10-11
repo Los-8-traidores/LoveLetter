@@ -118,4 +118,18 @@ public class Player {
 	public void addPoint() {
 		this.points++;
 	}
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	
+	public void playCard(Context contex) {
+		contex.apply();
+		
+	}
+	
+	@Override
+	public String toString() {
+		return this.name + ": Esta vivo? " + this.isAlive;
+	}
+	
 }
