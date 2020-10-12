@@ -6,6 +6,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import cards.*;
+import context.Context;
+import context.ContextBaron;
 import model.*;
 
 class TestContextBaron {

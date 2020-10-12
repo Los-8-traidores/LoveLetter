@@ -2,11 +2,11 @@ package model;
 
 
 import java.util.ArrayList;
-import screen.*;
 import java.util.Iterator;
 import java.util.List;
 
-import cards;
+import context.Context;
+
 
 public class Game {
 

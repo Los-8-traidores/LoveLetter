@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import cards.*;
+import context.Context;
+import context.ContextPrincess;
 import model.*;
 public class TestContextPrincess {
 	@Test

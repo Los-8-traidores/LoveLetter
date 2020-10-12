@@ -1,6 +1,7 @@
-package model;
+package context;
 
 import cards.Card;
+import model.Player;
 
 public class ContextBaron extends Context{
 	Player playerOnTurn;
