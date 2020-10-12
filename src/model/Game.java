@@ -169,7 +169,7 @@ public class Game {
 	}
 //////////
 	
-	public void playCard(Player player, Context context) {
+	public void playCard(Player player, Context context) {		
 		player.setCard1(player.getCard2());
 		player.setCard2(null);
 		

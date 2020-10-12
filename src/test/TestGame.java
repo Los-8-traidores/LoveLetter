@@ -62,7 +62,26 @@ public class TestGame {
 		practiceGame.playCard(player2, context2);
 		assertEquals(true, player2.isProtected());
 		assertEquals(true, player1.isTurn());
-		
-		
+				
 	}
+	
+	@Test
+	public void countessHandWithKing() {
+		Player player1 = new Player(1, "Jugador 1");
+		Player player2 = new Player(2, "Jugador 2");
+		
+		Game practiceGame = new Game(player1, player2);
+		practiceGame.grabCard(player1);
+		
+		player1.setCard1(new Countess());
+		player1.setCard2(new King());
+		player2.setCard1(new Princess());
+		
+		Context context = new ContextCountess(player1, player1.getCard1());
+		practiceGame.playCard(player1, context);//Juega la carta de la Condeza
+		assertEquals(true, player2.isTurn());
+		
+		assertEquals("Rey", player1.getCard1().getCardName()); //descarta la condesa y queda con el rey
+	} 
+	
 }
