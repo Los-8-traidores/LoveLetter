@@ -1,17 +1,12 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import cards.Baron;
-import cards.Guard;
-import cards.Handmaid;
-import model.Context;
-import model.ContextGuard;
-import model.ContextHandmaid;
-import model.Player;
+import cards.*;
+import model.*;
 
 class TestContextHandmaid {
 

@@ -1,13 +1,10 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
 
-import cards.Baron;
-import cards.Guard;
-import model.Context;
-import model.ContextGuard;
-import model.Player;
+import cards.*;
+import model.*;
 
 import org.junit.jupiter.api.Test;
 

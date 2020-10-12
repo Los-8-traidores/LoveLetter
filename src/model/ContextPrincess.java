@@ -1,3 +1,6 @@
+package model;
+
+import cards.Card;
 
 public class ContextPrincess extends Context {
 	Player playerOnTurn;
