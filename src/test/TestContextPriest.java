@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 //import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -18,6 +18,7 @@ public class TestContextPriest {
 			// Creo los jugadores
 			Player playerOne = new Player(new Priest());
 			Player playerTwo = new Player(new Guard());
+			playerTwo.setName("Pepe");
 			
 			// Levanta del mazo
 			
@@ -38,7 +39,7 @@ public class TestContextPriest {
 			//Jugadores
 			Player playerOne = new Player(new Handmaid());
 			Player playerTwo = new Player(new Priest());
-			
+			playerTwo.setName("Pepa");
 			
 			// Levanto
 			playerOne.setCard2(new Guard());
