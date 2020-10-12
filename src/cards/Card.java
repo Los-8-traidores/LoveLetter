@@ -2,12 +2,11 @@ package cards;
 
 import model.*;
 
-public interface Card {
+public abstract class Card {
 	
-	int getCardStrength();
-	String getCardName();
-	String getCardEffectDesc();
-	boolean isNeedsTraget();
+	public abstract int getCardStrength();
+	public abstract String getCardName();
+	public abstract String getCardEffectDesc();
+	public abstract boolean isNeedsTraget();
 	
-	public void effect(Player playerOnTurn, Player playerTarget);
 }

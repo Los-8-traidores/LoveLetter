@@ -6,6 +6,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import cards.*;
+import context.Context;
+import context.ContextHandmaid;
 import model.*;
 
 class TestContextHandmaid {

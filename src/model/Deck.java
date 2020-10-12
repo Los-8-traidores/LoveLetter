@@ -1,4 +1,3 @@
-  
 package model;
 
 import cards.*;
@@ -48,6 +47,7 @@ public class Deck {
 	
 	
 	public void resetDeck() {
+		fillDeck();
 		shuffleDeck();
 		dealtCards = 0;
 	}
