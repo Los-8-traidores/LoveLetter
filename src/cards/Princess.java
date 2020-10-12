@@ -2,7 +2,7 @@ package cards;
 
 import model.Player;
 
-public class Princess implements Card {
+public class Princess extends Card {
 	protected final int strength = 8;
 	protected final String name = "Princesa";
 	protected final String effectDesc = "Si descartas esta carta, quedas descalificado";
@@ -28,7 +28,4 @@ public class Princess implements Card {
 		return needsTarget;
 	}
 
-	public void effect(Player playerOnTurn, Player playerTarget) {
-		//Coming soon...
-	}
 }
