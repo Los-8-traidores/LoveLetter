@@ -24,6 +24,6 @@ public class TestContextPrincess {
 		player1.playCard(context);
 		
 		// Test
-		assertEquals(false, player1.isAlive());		
+		assertEquals(false, player1.isAlive());
 	}
 }

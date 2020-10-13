@@ -125,7 +125,6 @@ public class Player {
 	
 	public void playCard(Context contex) {
 		contex.apply();
-		
 	}
 	
 	@Override
