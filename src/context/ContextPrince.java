@@ -1,8 +1,8 @@
 package context;
 
-import cards;
-import model;
-public class ContextPrince {
+import cards.*;
+import model.*;
+public class ContextPrince extends Context{
 	Card card;
 	Player playerTarget;
 	Deck gameDeck;
