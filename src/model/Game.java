@@ -10,7 +10,6 @@ import context.Context;
 
 public class Game {
 
-	// Atributos
 	private final int cantPlayerMax = 4;
 	private final int cantPlayerMin = 2;
 	private int pointToWin;
@@ -18,25 +17,24 @@ public class Game {
 	private List<Player> playerList = new ArrayList<Player>();
 	private Deck deck = new Deck();
 
-	// Ctor con 2 jugadores 
 	public Game(Player player1, Player player2) {
 		playerList.add(player1);
 		playerList.add(player2);
 
 		this.gameEnabled = true;
-		this.pointToWin = 7;//PARA MI ES 4
+		this.pointToWin = 7;
 
 		setRound();
 
 		player1.setTurn(true);
 	}
-	///////// CONST AGREGADOS PARA MI //////////////////
+
 	public Game(Player player1, Player player2, Player player3) {
 		playerList.add(player1);
 		playerList.add(player2);
 		playerList.add(player3);
 		this.gameEnabled = true;
-		this.pointToWin = 6;
+		this.pointToWin = 5;
 		setRound();
 		player1.setTurn(true);
 	}
@@ -46,11 +44,10 @@ public class Game {
 		playerList.add(player3);
 		playerList.add(player4);
 		this.gameEnabled = true;
-		this.pointToWin = 8;
+		this.pointToWin = 4;
 		setRound();
 		player1.setTurn(true);
 	}
-	/////////////////////////////////////
 	
 	public List<Player> getPlayerList() {
 		return this.playerList;
@@ -60,7 +57,6 @@ public class Game {
 		this.playerList = playerList;
 	}
 
-////////////////////
 	public void setTurn(Player playerOnTurn) {
 		boolean flag = false;
 		int cont = 0;
@@ -87,8 +83,6 @@ public class Game {
 			}
 		}
 	}
-//////////////
-			
 
 	public void endRoud() {
 		int cantAct = cantActDeActivos();
@@ -117,8 +111,6 @@ public class Game {
 		setRound();
 	}
 
-
-/////////////////
 	public void checkRound() {
 		int cantAct = cantActDeActivos();
 		if (cantAct == 1) {
@@ -129,8 +121,7 @@ public class Game {
 			return;
 		endRoud();
 	}
-////////////
-	
+
 	private int cantActDeActivos() {
 		int cantAct = 0;
 		for (Player player : playerList) {
@@ -145,7 +136,6 @@ public class Game {
 		player.addPoint();
 	}
 	
-////////////
 	public void setRound() {
 		this.deck.resetDeck();
 		Iterator<Player> iterator = playerList.iterator();
@@ -153,8 +143,7 @@ public class Game {
 			iterator.next().setCard1(this.deck.drawCard());
 		}
 	}
-///////////
-	
+
 	private void endGame(Player player) {
 		gameEnabled = false;
 		System.out.println("Partida finalizada, ganó: " + player.getName());
@@ -163,12 +152,11 @@ public class Game {
 	public void grabCard(Player player) {
 		player.setCard2(deck.drawCard());
 	}
-//////////
+
 	public boolean activeGame(){
 		return gameEnabled;
 	}
-//////////
-	
+
 	public void playCard(Player player, Context context) {		
 		player.setCard1(player.getCard2());
 		player.setCard2(null);
