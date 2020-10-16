@@ -24,7 +24,7 @@ public class Countess extends Card{
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
 	}
 

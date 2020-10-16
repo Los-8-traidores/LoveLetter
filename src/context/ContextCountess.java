@@ -5,7 +5,7 @@ import model.Player;
 
 public class ContextCountess extends Context {
 	
-	Player playerOnTurn;
+	private Player playerOnTurn;
 
 	public ContextCountess(Player playerOnTurn, Card card){
 		this.playerOnTurn= playerOnTurn;		

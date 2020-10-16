@@ -24,7 +24,7 @@ public class Handmaid extends Card {
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
 	}
 }

@@ -24,7 +24,7 @@ public class Prince extends Card{
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
 	}
 
