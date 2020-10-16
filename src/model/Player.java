@@ -1,10 +1,11 @@
 package model;
 
 import cards.*;
+import context.Context;
 import screen.Screen;
 
 public class Player {
-	protected int id; // Pensar forma de elegir un numero random y que no se repitan entre si
+	protected int id;
 	protected String name;
 	protected int points = 0;
 	protected boolean isProtected = false;
@@ -12,7 +13,7 @@ public class Player {
 	protected Card card1 = null;
 	protected Card card2 = null;
 	protected int discards = 0;
-	protected boolean isTurn; // ver si hace falta o no
+	protected boolean isTurn;
 
 	public Player(Card card1) {
 		this.card1 = card1;
@@ -20,6 +21,7 @@ public class Player {
 
 	public Player(int id, String name) {
 		this.id = id;
+		
 		this.name = name;
 	}
 
@@ -118,4 +120,14 @@ public class Player {
 	public void addPoint() {
 		this.points++;
 	}
+	
+	public void playCard(Context contex) {
+		contex.apply();
+	}
+	
+	@Override
+	public String toString() {
+		return this.name + ": Esta vivo? " + this.isAlive;
+	}
+	
 }

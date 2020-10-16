@@ -2,7 +2,7 @@ package cards;
 
 import model.Player;
 
-public class Prince implements Card{
+public class Prince extends Card{
 	protected final int strength = 5;
 	protected final String name = "Príncipe";
 	protected final String effectDesc = "Elige a otro jugador a o ti mismo para descartar la carta y levantar otra. Si la princesa es descartada, queda descalificado el jugador";
@@ -24,11 +24,8 @@ public class Prince implements Card{
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
 	}
 
-	public void effect(Player playerOnTurn, Player playerTarget) {
-		//Coming soon...
-	}
 }

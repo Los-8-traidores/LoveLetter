@@ -2,7 +2,7 @@ package cards;
 
 import model.Player;
 
-public class Baron implements Card {
+public class Baron extends Card {
 	protected final int strength = 3;
 	protected final String name = "Barón";
 	protected final String effectDesc = "Comparas cartas con otro jugador, el que tenga la menor queda descalificado";
@@ -25,11 +25,7 @@ public class Baron implements Card {
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
-	}
-
-	public void effect(Player playerOnTurn, Player playerTarget) {
-		//Coming soon...
 	}
 }

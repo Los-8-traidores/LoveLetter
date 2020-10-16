@@ -2,7 +2,7 @@ package cards;
 
 import model.Player;
 
-public class King implements Card {
+public class King extends Card {
 	protected final int strength = 6;
 	protected final String name = "Rey";
 	protected final String effectDesc = "Elige otro jugador para intercambiar cartas";
@@ -24,14 +24,8 @@ public class King implements Card {
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
-	}
-
-	public void effect(Player playerOnTurn, Player playerTarget) {
-		Card auxCard = playerTarget.getCard1();
-		playerTarget.setCard1(playerOnTurn.getCard1());
-		playerOnTurn.setCard1(auxCard);
 	}
 
 }

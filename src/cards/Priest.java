@@ -2,7 +2,7 @@ package cards;
 
 import model.Player;
 
-public class Priest implements Card {
+public class Priest extends Card {
 	protected final int strength = 2;
 	protected final String name = "Sacerdote";
 	protected final String effectDesc = "Elige a otro jugador para ver su carta";
@@ -24,11 +24,7 @@ public class Priest implements Card {
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
-	}
-
-	public void effect(Player playerOnTurn, Player playerTarget) {
-		//Coming soon...
 	}
 }

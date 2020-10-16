@@ -2,7 +2,7 @@ package cards;
 
 import model.*;
 
-public class Handmaid implements Card {
+public class Handmaid extends Card {
 	protected final int strength = 4;
 	protected final String name = "Mucama";
 	protected final String effectDesc = "Hasta tu próximo turno, los demás jugadores no pueden aplicar los efectos de susc cartas sobre vos";
@@ -24,13 +24,7 @@ public class Handmaid implements Card {
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
 	}
-
-	public void effect(Player playerOnTurn, Player playerTarget) {
-		playerOnTurn.setProtected(true);
-	}
-
-	
 }

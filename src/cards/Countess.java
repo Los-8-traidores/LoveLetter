@@ -2,7 +2,7 @@ package cards;
 
 import model.Player;
 
-public class Countess implements Card{
+public class Countess extends Card{
 	protected final int strength = 7;
 	protected final String name = "Condesa";
 	protected final String effectDesc = "Descarta esta carta si tenes en tu mano al Rey o al Principe";
@@ -24,11 +24,8 @@ public class Countess implements Card{
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
 	}
 
-	public void effect(Player playerOnTurn, Player playerTarget) {
-		//Coming soon...
-	}
 }

@@ -3,7 +3,7 @@ package cards;
 import model.*;
 import screen.Screen;
 
-public class Guard implements Card {
+public class Guard extends Card {
 	protected final int strength = 1;
 	protected final String name = "Guardia";
 	protected final String effectDesc = "Elige a otro jugador para adivinar su carta (de tipo no guardia). Si la adivinas correctamente, el jugador queda descalificado";
@@ -25,16 +25,8 @@ public class Guard implements Card {
 	}
 
 	@Override
-	public boolean isNeedsTraget() {
+	public boolean isNeedsTarget() {
 		return needsTarget;
-	}
-
-	public void effect(Player playerOnTurn, Player playerTarget) {
-		Screen.showAllCardsExceptGuard();
-		String chosenCard = Screen.enterChosenCard();
-		
-		if(playerTarget.getCard1().getCardName().equals(chosenCard))
-			playerTarget.setAlive(false);
 	}
 }
 
