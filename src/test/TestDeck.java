@@ -21,7 +21,7 @@ public class TestDeck {
 		deck.shuffleDeck();
 		for(int i = 0; i<16; i++){
 			player1.setCard1(deck.drawCard());
-			System.out.println(player1.getCard1().getCardName());
+			System.out.println(player1.getCard1().getName());
 		}
 			
 		assertEquals(false, deck.notEmptyDeck());

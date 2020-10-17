@@ -22,7 +22,7 @@ class TestContexGuard {
 		player1.setCard2(new Guard());
 		
 		// Se crea Conexto
-		Context context = new ContextGuard(player1, player2, player1.getCard2(), "Barón");
+		Context context = new ContextGuard(player1, player2, player1.getCard2(), "BarÃ³n");
 		
 		// Jugar
 		player1.playCard(context);

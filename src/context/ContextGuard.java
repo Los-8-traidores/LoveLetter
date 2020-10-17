@@ -27,7 +27,7 @@ public class ContextGuard extends Context{
 	@Override
 	public boolean needApply() {
 		// Ver de CARD sea abtracta y crear metodo para comparar CARD con STRING
-		return this.guess.equals(playerTarget.getCard1().getCardName());
+		return this.guess.equals(playerTarget.getCard1().getName());
 	}
 	
 	private void applyTo(Player player) {

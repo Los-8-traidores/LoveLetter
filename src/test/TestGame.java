@@ -21,10 +21,10 @@ public class TestGame {
 		Player player2 = new Player(2, "Jugador 2");
 		Game practiceGame = new Game(player1, player2);
 		
-		System.out.println(player1.getCard1().getCardName());
-		System.out.println(player2.getCard1().getCardName());
+		System.out.println(player1.getCard1().getName());
+		System.out.println(player2.getCard1().getName());
 		practiceGame.grabCard(player1);
-		System.out.println(player1.getCard2().getCardName());
+		System.out.println(player1.getCard2().getName());
 		
 		player1.setCard1(new King());
 		player1.setCard2(new Guard());
@@ -81,7 +81,7 @@ public class TestGame {
 		practiceGame.playCard(player1, context);//Juega la carta de la Condeza
 		assertEquals(true, player2.isTurn());
 		
-		assertEquals("Rey", player1.getCard1().getCardName()); //descarta la condesa y queda con el rey
+		assertEquals("Rey", player1.getCard1().getName()); //descarta la condesa y queda con el rey
 	} 
 	
 }
