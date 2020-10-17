@@ -14,7 +14,7 @@ public class ContextBaron extends Context{
 	
 	@Override
 	public void apply() {
-		if(needApply() && (playerTarget.getCard1().getCardStrength() > playerOnTurn.getCard1().getCardStrength()))
+		if(needApply() && (playerTarget.getCard1().getStrength() > playerOnTurn.getCard1().getStrength()))
 			applyTo(playerOnTurn);
 		else if (needApply())
 			applyTo(playerTarget);
@@ -24,7 +24,7 @@ public class ContextBaron extends Context{
 	@Override
 	public boolean needApply() {
 		// Es mejor que carta se sepa comparar con otra carta y que player tenga un metodo que invoque a ese metodo
-		return !(playerTarget.getCard1().getCardStrength() == playerOnTurn.getCard1().getCardStrength()) && !playerTarget.isProtected();
+		return !(playerTarget.getCard1().getStrength() == playerOnTurn.getCard1().getStrength()) && !playerTarget.isProtected();
 	}
 	
 	private void applyTo(Player player) {

@@ -28,8 +28,8 @@ public class Screen {
 
 	public static void showCards(Card card1, Card card2) {
 		out.println("Cartas disponibles:");
-		out.println(card1.getCardName() + card1.getCardEffectDesc());
-		out.println(card2.getCardName() + card2.getCardEffectDesc());
+		out.println(card1.getName() + card1.getEffectDesc());
+		out.println(card2.getName() + card2.getEffectDesc());
 	}
 
 	public static String enterChosenCard() {
@@ -40,9 +40,9 @@ public class Screen {
 	public static void showAllCardsExceptGuard() {
 		out.println("Cartas disponibles:");
 		out.println("Sacerdote");
-		out.println("Barón");
+		out.println("Barï¿½n");
 		out.println("Mucama");
-		out.println("Príncipe");
+		out.println("Prï¿½ncipe");
 		out.println("Rey");
 		out.println("Condesa");
 		out.println("Princesa");
@@ -51,7 +51,7 @@ public class Screen {
 	// Esto graficamente va a ser para un solo jugador
 	public static void showPlayerCard(Player player) {
 		out.println("La carta del jugador: " + player.getName() + " es: ");
-		out.println(player.getCard1().getCardName() + ": " + player.getCard1().getCardEffectDesc());
+		out.println(player.getCard1().getName() + ": " + player.getCard1().getEffectDesc());
 
 	}
 

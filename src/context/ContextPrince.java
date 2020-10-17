@@ -28,7 +28,7 @@ public class ContextPrince extends Context{
 	}
 	
 	private void applyTo(Player player) {
-	    if(card.getCardName() == "Princesa"){
+	    if(card.getName() == "Princesa"){
 	    	player.setAlive(false);
 	    }else{
 	    	player.setCard1(gameDeck.drawCard());

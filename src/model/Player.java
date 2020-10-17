@@ -107,7 +107,7 @@ public class Player {
 		Screen.showCards(card1, card2);
 		Card chosenCard;
 
-		if (card1.getCardName() == Screen.enterChosenCard()) {
+		if (card1.getName() == Screen.enterChosenCard()) {
 			chosenCard = card1;
 			card1 = card2;
 			card2 = null;

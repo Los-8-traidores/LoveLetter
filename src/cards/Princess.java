@@ -3,29 +3,12 @@ package cards;
 import model.Player;
 
 public class Princess extends Card {
-	protected final int strength = 8;
-	protected final String name = "Princesa";
-	protected final String effectDesc = "Si descartas esta carta, quedas descalificado";
-	protected final boolean needsTarget = true;
- 			
-	@Override
-	public int getCardStrength() {
-		return strength;
-	}
+	private static final int STRENGTH = 8;
+	private static final String NAME = "Princesa";
+	private static final String EFFECT_DESC = "Si descartas esta carta, quedas descalificado";
+	private static final boolean NEED_TARGET = true;
 
-	@Override
-	public String getCardName() {
-		return name;
+	public Princess() {
+		super(STRENGTH, NAME, EFFECT_DESC, NEED_TARGET);
 	}
-
-	@Override
-	public String getCardEffectDesc() {
-		return effectDesc;
-	}
-
-	@Override
-	public boolean isNeedsTarget() {
-		return needsTarget;
-	}
-
 }
