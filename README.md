@@ -53,8 +53,8 @@ La partida termina cuando un jugador tiene suficientes fichas de Favor para gana
 |   1    | Guardia   | Elige a otro jugador y nombra un personaje que no sea otra Guardia. Si el jugador elegido tiene esa carta en la mano queda eliminado de la ronda. |
 |   2    | Sacerdote | Elige a otro jugador y mira la carta de su mano. |
 |   3    | Barón     | Elige a otro jugador y compara en secreto las cartas de vuestras manos. El jugador con la carta más baja queda eliminado de la ronda. |
-|   4    | Doncella  | Los demás jugadores no pueden elegirte para los efectos de sus cartas hasta tu próximo turno. |
+|   4    | Mucama    | Los demás jugadores no pueden elegirte para los efectos de sus cartas hasta tu próximo turno. |
 |   5    | Príncipe  | Elige a cualquier jugador (incluido a ti mismo). El jugador elegido descarta su carta y roba otra del mazo. |
-|   7    | Rey       | Elige a otro jugador y cambia la carta de tu mano por la carta de su mano. |
-|   8    | Condesa   | Si tienes al Rey o al Príncipe en tu mano debes jugar esta carta de inmediato. |
-|   9    | Princesa  | Si juegas o descartas esta carta quedas eliminado de la ronda. |
+|   6    | Rey       | Elige a otro jugador y cambia la carta de tu mano por la carta de su mano. |
+|   7    | Condesa   | Si tienes al Rey o al Príncipe en tu mano debes jugar esta carta de inmediato. |
+|   8    | Princesa  | Si juegas o descartas esta carta quedas eliminado de la ronda. |
