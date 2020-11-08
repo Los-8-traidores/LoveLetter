@@ -3,6 +3,7 @@ package cards;
 import model.*;
 
 public abstract class Card {
+<<<<<<< Updated upstream
 	protected int strength;
 	protected String name;
 	protected String effectDesc;
@@ -30,4 +31,16 @@ public abstract class Card {
 	public String isNeedsTarget() {
 		return effectDesc;
 	}
+=======
+	
+	public abstract int getCardStrength();
+	public abstract String getCardName();
+	public abstract String getCardEffectDesc();
+	public abstract boolean isNeedsTarget();
+	
+	public String getImagePath() {
+		return "card" + getCardName();
+	}
+	
+>>>>>>> Stashed changes
 }
