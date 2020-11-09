@@ -17,6 +17,10 @@ public class CardPanel extends JPanel {
 	private Image image;
 	private String path;
 	
+	public CardPanel() {
+		
+	}
+	
 	public CardPanel(String path) {
 		this.path = path;
 	}
@@ -31,4 +35,12 @@ public class CardPanel extends JPanel {
     	
         super.paint(g);
     }
+    
+    public String getPath() {
+		return path;
+	}
+    
+    public void setPath(String path) {
+		this.path = path;
+	}
 }

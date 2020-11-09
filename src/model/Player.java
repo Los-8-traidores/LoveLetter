@@ -5,15 +5,15 @@ import context.Context;
 import screen.Screen;
 
 public class Player {
-	protected int id;
-	protected String name;
-	protected int points = 0;
-	protected boolean isProtected = false;
-	protected boolean isAlive = true;
-	protected Card card1 = null;
-	protected Card card2 = null;
-	protected int discards = 0;
-	protected boolean isTurn;
+	private int id;
+	private String name;
+	private int points = 0;
+	private boolean isProtected = false;
+	private boolean isAlive = true;
+	private Card card1 = null;
+	private Card card2 = null;
+	private int discards = 0;
+	private boolean isTurn;
 
 	public Player(Card card1) {
 		this.card1 = card1;
@@ -21,7 +21,7 @@ public class Player {
 
 	public Player(int id, String name) {
 		this.id = id;
-		
+		this.isTurn = false;
 		this.name = name;
 	}
 

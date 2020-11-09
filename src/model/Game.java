@@ -10,8 +10,8 @@ import context.Context;
 
 public class Game {
 
-	private final int cantPlayerMax = 4;
-	private final int cantPlayerMin = 2;
+//	private final int cantPlayerMax = 4;
+//	private final int cantPlayerMin = 2;
 	private int pointToWin;
 	private boolean gameEnabled;
 	private List<Player> playerList = new ArrayList<Player>();
@@ -63,7 +63,7 @@ public class Game {
 
 		for (Player player : playerList) {
 			if(flag){
-				if(player.isAlive){
+				if(player.isAlive()){
 					player.setTurn(true);
 					return;
 				}
@@ -104,8 +104,8 @@ public class Game {
 				}
 				player.setTurn(true);
 			}
-			player.card1 = null;
-			player.card2 = null;
+			player.setCard1(null);
+			player.setCard2(null);
 		}
 
 		setRound();
@@ -125,7 +125,7 @@ public class Game {
 	private int cantActDeActivos() {
 		int cantAct = 0;
 		for (Player player : playerList) {
-			if (player.isAlive == true)
+			if (player.isAlive() == true)
 				cantAct += 1;
 		}
 
