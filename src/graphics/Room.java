@@ -21,8 +21,16 @@ public class Room extends JFrame {
 //	protected Card card;
 
 	private Game game;
-	private int posCartasJugadasX = 300;
-	private int posCartasJugadasY = 300;
+	
+	private int posCartasJugadasX;
+	private int posCartasJugadasY;
+	
+	private int posCartasJugadasX1 = 300;
+	private int posCartasJugadasY1 = 300;
+	
+	private int posCartasJugadasX2 = 300;
+	private int posCartasJugadasY2 = 160;
+	
 	private int tamCartasJugadasX = 74;
 	private int tamCartasJugadasY = 103;
 	
@@ -35,6 +43,11 @@ public class Room extends JFrame {
 	private int tamCartaY = 206;
 	
 	private int offset = 60;
+	
+	private CardPanel cp1;
+	private CardPanel cp2;
+	
+	private int turn = 1;
 	
 	
 
@@ -68,21 +81,15 @@ public class Room extends JFrame {
 	 */
 	public Room(Player player1, Player player2) {
 
-//		deck.fillDeck();
-//		deck.shuffleDeck();
-
 		game = new Game(player1, player2);
 		
-		playerActual = player1;
+		playerActual = game.getPlayerOnTurn();
 		
-		CardPanel cp1 = inicioRonda(playerActual);
+		inicioRonda(playerActual);
 		
-//		CardPanel cp1 = new CardPanel(playerActual.getCard1().getImagePath());
-//		cp1.setVisible(true);
-//		cp1.setBounds(posCarta1X, posCarta1Y, tamCartaX, tamCartaY);
-//
-//		back.add(cp1);
-
+		posCartasJugadasX = posCartasJugadasX1;
+		posCartasJugadasY = posCartasJugadasY1;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 		Container contentPane = getContentPane();
@@ -93,59 +100,89 @@ public class Room extends JFrame {
 		deckPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				game.grabCard(playerActual);
 				
-				CardPanel cp2 = new CardPanel(playerActual.getCard2().getImagePath());
-				cp2.setVisible(true);
-				cp2.setBounds(posCarta2X, posCarta2Y, tamCartaX, tamCartaY);
+				if(playerActual.getCard2() == null) {
+					game.grabCard(playerActual);
 
-				back.add(cp2);
-				repaint();
-				
-				
-				cp1.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-//						cp1.setBounds(posCartasJugadasX, posCartasJugadasY, tamCartasJugadasX, tamCartasJugadasY);
-//						posCartasJugadasX += offset;
-						
-						refreshCartasJugadas(cp1);
-						cp1.setVisible(false);
-						
-						
-						//playerActual = player2;
-						//repaint();
-						
-						//inicioRonda(playerActual);
-						
-						// Se deberia pasar el turno al otro jugador y se deberian crear los context segun la carta
-						
-						
-					}
-				});
-				
-				cp2.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
+					cp2.setPath(playerActual.getCard2().getImagePath());
+					cp2.setVisible(true);
+					back.repaint();
+
+
+					cp1.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							
+							refreshCartasJugadas(cp1.getPath());
+							cp1.setPath(cp2.getPath());
+							back.remove(cp2);
+							back.remove(cp1);
+							back.repaint();
+							
+							// Aca se llama
+							// game.playCard(player, context);
+							
+							//Esto no iria aca:
+							playerActual.setCard1(playerActual.getCard2());
+							playerActual.setCard2(null);
+							
+							//ESTO LO DEBERIA HACER GAME:
+							if (player1.isTurn()) {
+								player1.setTurn(false);
+								player2.setTurn(true);
+								playerActual = player2;
+							}
+							else {
+								player2.setTurn(false);
+								player1.setTurn(true);
+								playerActual = player1;
+							}
+							
+							cambioTurno(playerActual, contentPane);
+
+						}
+					});
+
+					cp2.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
 //						cp2.setBounds(posCartasJugadasX, posCartasJugadasY, tamCartasJugadasX, tamCartasJugadasY);
 //						posCartasJugadasX += offset;
-						
-						refreshCartasJugadas(cp2);
-						cp2.setVisible(false);
-						
-						
-						//playerActual = player2;
-						//repaint();
-						
-						//inicioRonda(playerActual);
-						
-						// Se deberia pasar el turno al otro jugador y se deberian crear los context segun la carta
-					}
-				});
 
-//				else {
-//					JOptionPane.showMessageDialog(contentPane, "El maso esta vacío", "Fin de la partida",JOptionPane.WARNING_MESSAGE );
-//				}
+							refreshCartasJugadas(cp2.getPath());
+							//cp2.setVisible(false);
+							back.remove(cp2);
+							
+							back.repaint();
+							
+							// Aca se llama
+							// game.playCard(player, context);
+							
+							//Esto no iria aca:
+							playerActual.setCard2(null);
+							
+							//ESTO LO DEBERIA HACER GAME:
+							if (player1.isTurn()) {
+								player1.setTurn(false);
+								player2.setTurn(true);
+								playerActual = player2;
+							}
+							else {
+								player2.setTurn(false);
+								player1.setTurn(true);
+								playerActual = player1;
+							}
+							
+							cambioTurno(playerActual, contentPane);
+
+						}
+					});
+				
+				}
+
+				else {
+					JOptionPane.showMessageDialog(contentPane, "No vale cartearse", "",JOptionPane.WARNING_MESSAGE );
+				}
 
 			}
 		});
@@ -219,26 +256,66 @@ public class Room extends JFrame {
 		deckPanel.setLayout(null);
 	}
 	
-	private CardPanel inicioRonda(Player playerActual) {
-		CardPanel cp = new CardPanel(playerActual.getCard1().getImagePath());
-		cp.setVisible(true);
-		cp.setBounds(posCarta1X, posCarta1Y, tamCartaX, tamCartaY);
+	private void inicioRonda(Player playerActual) {
+		cp1 = new CardPanel(playerActual.getCard1().getImagePath());
+		cp1.setVisible(true);
+		cp1.setBounds(posCarta1X, posCarta1Y, tamCartaX, tamCartaY);
 
-		back.add(cp);
+		back.add(cp1);
 		
-		return cp;
+		cp2 = new CardPanel();
+		cp2.setVisible(false);
+		cp2.setBounds(posCarta2X, posCarta2Y, tamCartaX, tamCartaY);
+		
+		back.add(cp2);
 		
 	}
 	
-	private void refreshCartasJugadas(CardPanel cp) {
-		CardPanel cpAux = new CardPanel(cp.getPath());
+	private void refreshCartasJugadas(String path) {
+		CardPanel cpAux = new CardPanel(path);
 		cpAux.setVisible(true);
 		cpAux.setBounds(posCartasJugadasX, posCartasJugadasY, tamCartasJugadasX, tamCartasJugadasY);
 
 		back.add(cpAux);
-		
+				
 		posCartasJugadasX += offset;
-	}
+		
+		if (turn % 2 == 0) {
+			posCartasJugadasX2 += offset;		
+		}
+		else {
+			posCartasJugadasX1 += offset;	
+		}
 
+	}
+	
+	private void cambioTurno(Player player, Container contentPane) {
+		playerActual = player;
+		
+		JOptionPane.showMessageDialog(contentPane, "Pase el mando al proximo jugador", "Cambio de turno",JOptionPane.WARNING_MESSAGE );
+		
+		turn++;
+		
+		refreshPantalla();
+	}
+	
+	private void refreshPantalla() {
+		back.remove(cp1);
+		back.remove(cp2);
+		
+		if (turn % 2 == 0) {
+			posCartasJugadasX = posCartasJugadasX2;
+			posCartasJugadasY = posCartasJugadasY2;			
+		}
+		else {
+			posCartasJugadasX = posCartasJugadasX1;
+			posCartasJugadasY = posCartasJugadasY1;	
+		}
+		
+		inicioRonda(playerActual);
+		
+		back.repaint();
+	}
+ 
 
 }
