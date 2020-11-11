@@ -111,6 +111,25 @@ public class Room extends JFrame {
 
 					cp1.addMouseListener(new MouseAdapter() {
 						@Override
+						public void mouseEntered(MouseEvent e) {
+
+							cp1.onFocusCard(getGraphics(), posCarta1X, posCarta1Y);
+
+							System.out.println("Entro");
+							super.mouseEntered(e);
+							
+						}
+
+						@Override
+						public void mouseExited(MouseEvent e) {
+
+							cp1.lostFocus(getGraphics(), posCarta1X, posCarta1Y);
+				
+							back.repaint();
+							System.out.println("Salio");
+							super.mouseExited(e);
+						}
+						@Override
 						public void mouseClicked(MouseEvent e) {
 							
 							refreshCartasJugadas(cp1.getPath());
@@ -144,6 +163,26 @@ public class Room extends JFrame {
 					});
 
 					cp2.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseEntered(MouseEvent e) {
+
+							cp2.onFocusCard(getGraphics(), posCarta2X, posCarta2Y);
+
+							System.out.println("Entro");
+							super.mouseEntered(e);
+							
+						}
+
+						@Override
+						public void mouseExited(MouseEvent e) {
+
+							cp2.lostFocus(getGraphics(), posCarta2X, posCarta2Y);
+				
+							back.repaint();
+							System.out.println("Salio");
+							super.mouseExited(e);
+						}
+
 						@Override
 						public void mouseClicked(MouseEvent e) {
 //						cp2.setBounds(posCartasJugadasX, posCartasJugadasY, tamCartasJugadasX, tamCartasJugadasY);
