@@ -3,23 +3,25 @@ package graphics;
 import java.awt.Container;
 import java.awt.EventQueue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.awt.Font;
 =======
 import java.awt.Graphics2D;
 >>>>>>> b395706... ContextBuilder
 
+=======
+>>>>>>> a5cceca... Vincula el game con el room
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
-import javax.swing.JComponent;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import cards.Card;
+import context.ContextGuard;
 import model.*;
 import sound.Sound;
 
@@ -110,7 +112,7 @@ public class Room extends JFrame {
 		posCartasJugadasY = posCartasJugadasY1;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1280, 720);
+		setBounds(50, 10, 1280, 720);
 		Container contentPane = getContentPane();
 		contentPane.add(back);
 		back.setLayout(null);
@@ -144,30 +146,34 @@ public class Room extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							
+							
+						
 							refreshCartasJugadas(cp1.getPath());
 							cp1.setPath(cp2.getPath());
 							back.remove(cp2);
 							back.remove(cp1);
 							back.repaint();
 							
+							
 							// Aca se llama
-							// game.playCard(player, context);
+							 playCard(game, playerActual.getCard1(), contentPane);
 							
 							//Esto no iria aca:
-							playerActual.setCard1(playerActual.getCard2());
-							playerActual.setCard2(null);
+//							playerActual.setCard1(playerActual.getCard2());
+//							playerActual.setCard2(null);
 							
 							//ESTO LO DEBERIA HACER GAME:
-							if (player1.isTurn()) {
-								player1.setTurn(false);
-								player2.setTurn(true);
-								playerActual = player2;
-							}
-							else {
-								player2.setTurn(false);
-								player1.setTurn(true);
-								playerActual = player1;
-							}
+//							if (player1.isTurn()) {
+//								player1.setTurn(false);
+//								player2.setTurn(true);
+//								playerActual = player2;
+//							}
+//							else {
+//								player2.setTurn(false);
+//								player1.setTurn(true);
+//								playerActual = player1;
+//							}
+							
 							
 							cambioTurno(playerActual, contentPane);
 
@@ -196,24 +202,24 @@ public class Room extends JFrame {
 							back.remove(cp2);
 							
 							back.repaint();
-							
+							game.getPlayerOnTurn().setPoints(6);
 							// Aca se llama
-							// game.playCard(player, context);
+							playCard(game, playerActual.getCard2(), contentPane);
 							
 							//Esto no iria aca:
-							playerActual.setCard2(null);
+//							playerActual.setCard2(null);
 							
-							//ESTO LO DEBERIA HACER GAME:
-							if (player1.isTurn()) {
-								player1.setTurn(false);
-								player2.setTurn(true);
-								playerActual = player2;
-							}
-							else {
-								player2.setTurn(false);
-								player1.setTurn(true);
-								playerActual = player1;
-							}
+//							//ESTO LO DEBERIA HACER GAME:
+//							if (player1.isTurn()) {
+//								player1.setTurn(false);
+//								player2.setTurn(true);
+//								playerActual = player2;
+//							}
+//							else {
+//								player2.setTurn(false);
+//								player1.setTurn(true);
+//								playerActual = player1;
+//							}
 							
 							cambioTurno(playerActual, contentPane);
 
@@ -334,10 +340,7 @@ public class Room extends JFrame {
 	private void cambioTurno(Player player, Container contentPane) {
 		playerActual = player;
 		
-		back.remove(cp1);
-		back.remove(cp2);
-		
-		JOptionPane.showMessageDialog(contentPane, "Pase el mando al proximo jugador", "Cambio de turno", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(contentPane, "Pase el mando al "+game.getPlayerOnTurn().getName(), "Cambio de turno",JOptionPane.WARNING_MESSAGE );
 		
 		turn++;
 		
@@ -361,6 +364,29 @@ public class Room extends JFrame {
 		
 		back.repaint();
 	}
- 
+	
+	public void playCard(Game game, Card card, Container contentPane) {
+		
+		if(card.getName() == "Guardia") {
+			
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						GraphicGuard frame2 = new GraphicGuard(game);
+						frame2.setVisible(true);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+			
 
+		}else {
+			
+		}
+		
+		
+	}
+	
 }

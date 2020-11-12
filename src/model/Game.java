@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import context.Context;
+import cards.*;
 
 
 public class Game {
@@ -61,7 +62,7 @@ public class Game {
 		this.playerList = playerList;
 	}
 	
-	public void setTurn(Player playerOnTurn) {
+	public void setTurn() {
 		boolean flag = false;
 		int cont = 0;
 
@@ -69,6 +70,7 @@ public class Game {
 			if(flag){
 				if(player.isAlive()){
 					player.setTurn(true);
+					playerOnTurn = player;
 					return;
 				}
 			}
@@ -79,6 +81,7 @@ public class Game {
 					for (int i = 0; i < cont; i++) {
 						if (playerList.get(i).isAlive()) {
 							playerList.get(i).setTurn(true);
+							playerOnTurn = playerList.get(i);
 							return;
 						}
 					}
@@ -161,14 +164,20 @@ public class Game {
 		return gameEnabled;
 	}
 
-	public void playCard(Player player, Context context) {		
-		player.setCard1(player.getCard2());
-		player.setCard2(null);
+	public void playCard(Player player, Context context, Card card) {	
+		
+		if(player.getCard1().getName() == card.getName()) {
+			player.setCard1(player.getCard2());
+			player.setCard2(null);
+		}else {
+			player.setCard2(null);
+		}
 		
 		player.playCard(context);
 		
 		this.checkRound();
-		setTurn(player);
+		setTurn();
+	
 	}
 
 	public Player getPlayerOnTurn() {
