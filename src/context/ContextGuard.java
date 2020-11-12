@@ -9,6 +9,7 @@ public class ContextGuard extends Context{
 	private Player playerTarget;
 //	private Card card;
 	private String guess;
+	private boolean acierto;
 	
 	public ContextGuard(Player playerTurn, Player playerTarget, Card card, String guess) {
 //	    this.playerTurn = playerTurn;
@@ -20,8 +21,10 @@ public class ContextGuard extends Context{
 	@Override
 	public void apply() {
 		if (needApply()) {
-			applyTo(this.playerTarget);;
-		}
+			applyTo(this.playerTarget);
+			acierto = true;
+		}else {acierto = false;}
+		
 	}
 
 	@Override
@@ -32,6 +35,11 @@ public class ContextGuard extends Context{
 	
 	private void applyTo(Player player) {
 	    player.setAlive(false);
+	    
+	}
+	
+	public boolean getAcierto(){
+		return acierto;
 	}
 
 }
