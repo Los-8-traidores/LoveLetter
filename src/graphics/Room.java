@@ -2,6 +2,8 @@ package graphics;
 
 import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.Font;
+
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
@@ -22,6 +24,8 @@ public class Room extends JFrame {
 //	protected Card card;
 
 	private Game game;
+	
+	private static Font enchantedFont = MyFont.createFont();
 	
 	private int posCartasJugadasX;
 	private int posCartasJugadasY;

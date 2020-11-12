@@ -12,9 +12,14 @@ import sound.Sound;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.SystemColor;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -27,11 +32,13 @@ public class Lobby extends JFrame {
 	private static final long serialVersionUID = -5098487617570239475L;
 	private JPanel contentPane;
 	static private Sound music;
+	private static Font enchantedFont = MyFont.createFont();
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
+	
+	
+	
+
+	public static void main(String[] args){
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -87,6 +94,7 @@ public class Lobby extends JFrame {
 		});
 		btnNewButton.setBounds(33, 139, 105, 37);
 		contentPane.add(btnNewButton);
+		btnNewButton.setFont(enchantedFont);
 		
 		JButton btnJugadores = new JButton("3 Jugadores");
 		btnJugadores.addActionListener(new ActionListener() {
@@ -112,6 +120,7 @@ public class Lobby extends JFrame {
 		});
 		btnJugadores.setBounds(167, 139, 105, 37);
 		contentPane.add(btnJugadores);
+		btnJugadores.setFont(enchantedFont);
 		
 		JButton btnNewButton_1_1 = new JButton("4 Jugadores");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
@@ -138,6 +147,7 @@ public class Lobby extends JFrame {
 		});
 		btnNewButton_1_1.setBounds(298, 139, 105, 37);
 		contentPane.add(btnNewButton_1_1);
+		btnNewButton_1_1.setFont(enchantedFont);
 		
 		JFormattedTextField frmtdtxtfldSeleccioneTipoDe = new JFormattedTextField();
 		frmtdtxtfldSeleccioneTipoDe.setText("Seleccione tipo de partida:");
@@ -148,5 +158,7 @@ public class Lobby extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setBounds(33, 65, 372, 48);
 		contentPane.add(lblNewLabel);
+		lblNewLabel.setFont(enchantedFont);
+		
 	}
 }

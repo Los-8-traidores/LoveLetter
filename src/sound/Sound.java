@@ -1,8 +1,6 @@
 package sound;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 
 import javax.print.DocFlavor.INPUT_STREAM;
 import javax.sound.sampled.AudioInputStream;
