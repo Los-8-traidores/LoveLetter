@@ -2,12 +2,18 @@ package graphics;
 
 import java.awt.Container;
 import java.awt.EventQueue;
+<<<<<<< HEAD
 import java.awt.Font;
+=======
+import java.awt.Graphics2D;
+>>>>>>> b395706... ContextBuilder
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
@@ -328,7 +334,10 @@ public class Room extends JFrame {
 	private void cambioTurno(Player player, Container contentPane) {
 		playerActual = player;
 		
-		JOptionPane.showMessageDialog(contentPane, "Pase el mando al proximo jugador", "Cambio de turno",JOptionPane.WARNING_MESSAGE );
+		back.remove(cp1);
+		back.remove(cp2);
+		
+		JOptionPane.showMessageDialog(contentPane, "Pase el mando al proximo jugador", "Cambio de turno", JOptionPane.WARNING_MESSAGE);
 		
 		turn++;
 		
