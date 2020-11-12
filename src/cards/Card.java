@@ -30,4 +30,10 @@ public abstract class Card {
 	public String isNeedsTarget() {
 		return effectDesc;
 	}
+
+	
+	public String getImagePath() {
+		return "card" + getName();
+	}
+	
 }

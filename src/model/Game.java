@@ -10,10 +10,11 @@ import context.Context;
 
 public class Game {
 
-	private final int cantPlayerMax = 4;
-	private final int cantPlayerMin = 2;
+//	private final int cantPlayerMax = 4;
+//	private final int cantPlayerMin = 2;
 	private int pointToWin;
 	private boolean gameEnabled;
+	private Player playerOnTurn;
 	private List<Player> playerList = new ArrayList<Player>();
 	private Deck deck = new Deck();
 
@@ -27,6 +28,7 @@ public class Game {
 		setRound();
 
 		player1.setTurn(true);
+		playerOnTurn = player1;
 	}
 
 	public Game(Player player1, Player player2, Player player3) {
@@ -37,6 +39,7 @@ public class Game {
 		this.pointToWin = 5;
 		setRound();
 		player1.setTurn(true);
+		playerOnTurn = player1;
 	}
 	public Game(Player player1, Player player2, Player player3, Player player4) {
 		playerList.add(player1);
@@ -47,6 +50,7 @@ public class Game {
 		this.pointToWin = 4;
 		setRound();
 		player1.setTurn(true);
+		playerOnTurn = player1;
 	}
 	
 	public List<Player> getPlayerList() {
@@ -56,14 +60,14 @@ public class Game {
 	public void setPlayerList(List<Player> playerList) {
 		this.playerList = playerList;
 	}
-
+	
 	public void setTurn(Player playerOnTurn) {
 		boolean flag = false;
 		int cont = 0;
 
 		for (Player player : playerList) {
 			if(flag){
-				if(player.isAlive){
+				if(player.isAlive()){
 					player.setTurn(true);
 					return;
 				}
@@ -104,8 +108,8 @@ public class Game {
 				}
 				player.setTurn(true);
 			}
-			player.card1 = null;
-			player.card2 = null;
+			player.setCard1(null);
+			player.setCard2(null);
 		}
 
 		setRound();
@@ -125,7 +129,7 @@ public class Game {
 	private int cantActDeActivos() {
 		int cantAct = 0;
 		for (Player player : playerList) {
-			if (player.isAlive == true)
+			if (player.isAlive() == true)
 				cantAct += 1;
 		}
 
@@ -165,5 +169,9 @@ public class Game {
 		
 		this.checkRound();
 		setTurn(player);
+	}
+
+	public Player getPlayerOnTurn() {
+		return playerOnTurn;
 	}
 }
