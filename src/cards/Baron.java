@@ -3,29 +3,12 @@ package cards;
 import model.Player;
 
 public class Baron extends Card {
-	protected final int strength = 3;
-	protected final String name = "Barón";
-	protected final String effectDesc = "Comparas cartas con otro jugador, el que tenga la menor queda descalificado";
-	protected final boolean needsTarget = true;
+	private static final int STRENGTH = 3;
+	private static final String NAME = "Baron";
+	private static final String EFFECT_DESC = "Comparas cartas con otro jugador, el que tenga la menor queda descalificado";
+	private static final boolean NEED_TARGET = true;
 
-
-	@Override
-	public int getStrength() {
-		return strength;
-	}
-
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public String getEffectDesc() {
-		return effectDesc;
-	}
-
-	@Override
-	public boolean isNeedsTarget() {
-		return needsTarget;
+	public Baron() {
+		super(STRENGTH, NAME, EFFECT_DESC, NEED_TARGET);
 	}
 }

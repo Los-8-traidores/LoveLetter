@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import cards.Card;
 import model.Deck;
 
-public class DeckPanel extends JPanel{
+public class DeckPanel extends JPanel {
 	/**
 	 * 
 	 */
