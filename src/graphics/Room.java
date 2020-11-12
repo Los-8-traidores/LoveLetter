@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 
 import cards.Card;
 import model.*;
+import sound.Sound;
 
 public class Room extends JFrame {
 	
@@ -80,8 +81,16 @@ public class Room extends JFrame {
 	 * @param player1
 	 */
 	public Room(Player player1, Player player2) {
-
+		
 		game = new Game(player1, player2);
+		
+		Sound music;
+		try {
+			music = new Sound("src/sound/allstar.wav");
+			music.play();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		playerActual = game.getPlayerOnTurn();
 		
@@ -112,21 +121,14 @@ public class Room extends JFrame {
 					cp1.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseEntered(MouseEvent e) {
-
 							cp1.onFocusCard(getGraphics(), posCarta1X, posCarta1Y);
-
-							System.out.println("Entro");
-							super.mouseEntered(e);
-							
+							super.mouseEntered(e);		
 						}
 
 						@Override
 						public void mouseExited(MouseEvent e) {
-
 							cp1.lostFocus(getGraphics(), posCarta1X, posCarta1Y);
-				
 							back.repaint();
-							System.out.println("Salio");
 							super.mouseExited(e);
 						}
 						@Override
@@ -165,24 +167,15 @@ public class Room extends JFrame {
 					cp2.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseEntered(MouseEvent e) {
-
-							cp2.onFocusCard(getGraphics(), posCarta2X, posCarta2Y);
-
-							System.out.println("Entro");
-							super.mouseEntered(e);
-							
+							cp2.onFocusCard(getGraphics(), posCarta2X, posCarta2Y);;
+							super.mouseEntered(e);							
 						}
-
 						@Override
 						public void mouseExited(MouseEvent e) {
-
-							cp2.lostFocus(getGraphics(), posCarta2X, posCarta2Y);
-				
+							cp2.lostFocus(getGraphics(), posCarta2X, posCarta2Y);				
 							back.repaint();
-							System.out.println("Salio");
 							super.mouseExited(e);
 						}
-
 						@Override
 						public void mouseClicked(MouseEvent e) {
 //						cp2.setBounds(posCartasJugadasX, posCartasJugadasY, tamCartasJugadasX, tamCartasJugadasY);

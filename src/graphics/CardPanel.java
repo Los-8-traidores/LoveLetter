@@ -28,7 +28,7 @@ public class CardPanel extends JPanel {
     @Override
     public void paint(Graphics g) {
     	
-    	image = new ImageIcon(getClass().getResource("/img/"+ path +".png")).getImage();
+    	image = new ImageIcon(getClass().getResource("/img/" + path + ".png")).getImage();
     	
     	g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     	setOpaque(false);
@@ -37,7 +37,7 @@ public class CardPanel extends JPanel {
     }
     
     public void onFocusCard (Graphics g, int posX, int posY) {
-    	image = new ImageIcon(getClass().getResource("/img/"+ path+ "Glow" + ".png")).getImage();
+    	image = new ImageIcon(getClass().getResource("/img/" + path + "Glow" + ".png")).getImage();
     	
     	g.drawImage(image, posX, posY, (int)Math.round(getWidth()*1.5), (int)Math.round(getHeight()*1.5), this);
     	setOpaque(false);

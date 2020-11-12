@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import model.Player;
+import sound.Sound;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -25,7 +26,8 @@ public class Lobby extends JFrame {
 	 */
 	private static final long serialVersionUID = -5098487617570239475L;
 	private JPanel contentPane;
-
+	static private Sound music;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -33,8 +35,15 @@ public class Lobby extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					try {
+						music = new Sound("src/sound/intro.wav");
+						music.play();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 					Lobby frame = new Lobby();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -70,8 +79,10 @@ public class Lobby extends JFrame {
 						}
 					}
 				});
-				
+				// Esto podria ser un metodo onClose o algo asi
+				music.stop();
 				setVisible(false);
+				// se repite en cada boton
 			}
 		});
 		btnNewButton.setBounds(33, 139, 105, 37);
@@ -95,6 +106,7 @@ public class Lobby extends JFrame {
 					}
 				});
 				
+				music.stop();
 				setVisible(false);
 			}
 		});
@@ -120,6 +132,7 @@ public class Lobby extends JFrame {
 					}
 				});
 				
+				music.stop();
 				setVisible(false);
 			}
 		});
