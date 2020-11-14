@@ -42,7 +42,7 @@ public class GraphicGuard extends JDialog {
 			players[i] = game.getPlayerList().get(i).getName();
 		}
 		for(int i = 0; i< game.getPlayerList().size(); i++) {
-			if(game.getPlayerList().get(i).isAlive() ) {
+			if(game.getPlayerList().get(i).isAlive() && game.getPlayerList().get(i) != game.getPlayerOnTurn()) {
 				
 				JButton button = new JButton(players[i]);
 				button.setText(players[i]);
