@@ -2,18 +2,26 @@ package graphics;
 
 import java.awt.Container;
 import java.awt.EventQueue;
+
+import java.awt.Graphics2D;
+
 import java.awt.Font;
+
+import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import cards.Card;
+import context.ContextGuard;
 import model.*;
 import sound.Sound;
 
@@ -54,6 +62,8 @@ public class Room extends JFrame {
 	
 	private int turn = 1;
 	
+	public Room room;
+		
 	
 
 	/**
@@ -86,6 +96,7 @@ public class Room extends JFrame {
 	 */
 	public Room(Player player1, Player player2) {
 		
+		room = this;
 		game = new Game(player1, player2);
 		
 		Sound music;
@@ -104,7 +115,7 @@ public class Room extends JFrame {
 		posCartasJugadasY = posCartasJugadasY1;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1280, 720);
+		setBounds(50, 10, 1280, 720);
 		Container contentPane = getContentPane();
 		contentPane.add(back);
 		back.setLayout(null);
@@ -138,32 +149,36 @@ public class Room extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							
+							
+						
 							refreshCartasJugadas(cp1.getPath());
 							cp1.setPath(cp2.getPath());
 							back.remove(cp2);
 							back.remove(cp1);
 							back.repaint();
 							
+							
 							// Aca se llama
-							// game.playCard(player, context);
+							 playCard(game, playerActual.getCard1(), contentPane, room);
 							
 							//Esto no iria aca:
-							playerActual.setCard1(playerActual.getCard2());
-							playerActual.setCard2(null);
+//							playerActual.setCard1(playerActual.getCard2());
+//							playerActual.setCard2(null);
 							
 							//ESTO LO DEBERIA HACER GAME:
-							if (player1.isTurn()) {
-								player1.setTurn(false);
-								player2.setTurn(true);
-								playerActual = player2;
-							}
-							else {
-								player2.setTurn(false);
-								player1.setTurn(true);
-								playerActual = player1;
-							}
+//							if (player1.isTurn()) {
+//								player1.setTurn(false);
+//								player2.setTurn(true);
+//								playerActual = player2;
+//							}
+//							else {
+//								player2.setTurn(false);
+//								player1.setTurn(true);
+//								playerActual = player1;
+//							}
+							 
+//							cambioTurno(playerActual, contentPane);
 							
-							cambioTurno(playerActual, contentPane);
 
 						}
 					});
@@ -190,26 +205,26 @@ public class Room extends JFrame {
 							back.remove(cp2);
 							
 							back.repaint();
-							
+							game.getPlayerOnTurn().setPoints(6);
 							// Aca se llama
-							// game.playCard(player, context);
+							playCard(game, playerActual.getCard2(), contentPane, room);
 							
 							//Esto no iria aca:
-							playerActual.setCard2(null);
+//							playerActual.setCard2(null);
 							
-							//ESTO LO DEBERIA HACER GAME:
-							if (player1.isTurn()) {
-								player1.setTurn(false);
-								player2.setTurn(true);
-								playerActual = player2;
-							}
-							else {
-								player2.setTurn(false);
-								player1.setTurn(true);
-								playerActual = player1;
-							}
+//							//ESTO LO DEBERIA HACER GAME:
+//							if (player1.isTurn()) {
+//								player1.setTurn(false);
+//								player2.setTurn(true);
+//								playerActual = player2;
+//							}
+//							else {
+//								player2.setTurn(false);
+//								player1.setTurn(true);
+//								playerActual = player1;
+//							}
 							
-							cambioTurno(playerActual, contentPane);
+//							cambioTurno(playerActual, contentPane);
 
 						}
 					});
@@ -325,15 +340,36 @@ public class Room extends JFrame {
 
 	}
 	
+	public void checkRoundGraphic(Game game, Container contentPane) {
+		
+		if(!game.activeGame()) {
+			JOptionPane.showMessageDialog(contentPane, "Finaizó la Partida", " ",JOptionPane.WARNING_MESSAGE );
+			//inicioRonda(playerActual);
+			//finPartida();
+			return;
+			
+		}
+		
+		game.checkRound();
+		cambioTurno(game.getPlayerOnTurn(), contentPane);
+		
+	}
+	
+	
 	private void cambioTurno(Player player, Container contentPane) {
 		playerActual = player;
 		
-		JOptionPane.showMessageDialog(contentPane, "Pase el mando al proximo jugador", "Cambio de turno",JOptionPane.WARNING_MESSAGE );
+		back.remove(cp1);
+		back.remove(cp2);
+		
+		JOptionPane.showMessageDialog(contentPane, "Pase el mando al "+game.getPlayerOnTurn().getName(), "Cambio de turno",JOptionPane.WARNING_MESSAGE );
+
 		
 		turn++;
 		
 		refreshPantalla();
 	}
+	
 	
 	private void refreshPantalla() {
 		back.remove(cp1);
@@ -352,6 +388,55 @@ public class Room extends JFrame {
 		
 		back.repaint();
 	}
- 
+	
+	public void playCard(Game game, Card card, Container contentPane, Room room) {
+		
+		if(card.getName() == "Guardia") {
+			
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						GraphicGuard frame2 = new GraphicGuard(game, room, contentPane);
+						frame2.setVisible(true);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+			
 
+		}
+		else {
+			if(game.getPlayerOnTurn().getCard1().getName() == card.getName()) {
+				game.getPlayerOnTurn().setCard1(game.getPlayerOnTurn().getCard2());
+				game.getPlayerOnTurn().setCard2(null);
+			}else {
+				game.getPlayerOnTurn().setCard2(null);
+			}
+			game.setTurn();
+			
+			room.checkRoundGraphic(game, contentPane);
+			
+		}
+		
+	}
+	
+	private void finPartida() {
+		back.remove(cp1);
+		back.remove(cp2);
+		
+		if (turn % 2 == 0) {
+			posCartasJugadasX = 300;
+			posCartasJugadasY = 300;			
+		}
+		else {
+			posCartasJugadasX = 300;
+			posCartasJugadasY = 160;	
+		}
+		
+		
+		back.repaint();
+	}
+	
 }
