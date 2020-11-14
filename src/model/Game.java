@@ -125,6 +125,7 @@ public class Game {
 			return;
 		}
 		if(this.deck.notEmptyDeck())
+			//setTurn();
 			return;
 		endRoud();
 	}

@@ -1,5 +1,6 @@
 package graphics;
 
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,7 +25,7 @@ public class GraphicGuard extends JDialog {
 //	protected Player target;
 	
 	
-	public GraphicGuard(Game game) {
+	public GraphicGuard(Game game, Room room, Container contentPane) {
 		setTitle("Elige un Juagdor");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(350, 100, 450, 400);
@@ -77,14 +78,12 @@ public class GraphicGuard extends JDialog {
 									
 									if(context.getAcierto()) {
 										JOptionPane.showMessageDialog(playersPanel, "Se eliminó al jugador: "+ button.getText(), "Hubo Acierto",JOptionPane.WARNING_MESSAGE );
-										if(!game.activeGame()) {
-											JOptionPane.showMessageDialog(playersPanel, "Finaizó la Partida", " ",JOptionPane.WARNING_MESSAGE );
-										}
+											room.checkRoundGraphic(game, contentPane);
 
 									}else {
 										
 										JOptionPane.showMessageDialog(playersPanel, "Nadie fué eliminado", "No Hubo Acierto",JOptionPane.WARNING_MESSAGE );
-
+										room.checkRoundGraphic(game, contentPane);
 									}
 									
 									dispose();
@@ -121,6 +120,9 @@ public class GraphicGuard extends JDialog {
 				
 				playersPanel.add(button);
 				offset+=120;
+				
+				
+				
 				
 			}
 		}

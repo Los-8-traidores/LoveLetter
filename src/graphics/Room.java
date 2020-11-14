@@ -62,6 +62,8 @@ public class Room extends JFrame {
 	
 	private int turn = 1;
 	
+	public Room room;
+		
 	
 
 	/**
@@ -94,6 +96,7 @@ public class Room extends JFrame {
 	 */
 	public Room(Player player1, Player player2) {
 		
+		room = this;
 		game = new Game(player1, player2);
 		
 		Sound music;
@@ -156,7 +159,7 @@ public class Room extends JFrame {
 							
 							
 							// Aca se llama
-							 playCard(game, playerActual.getCard1(), contentPane);
+							 playCard(game, playerActual.getCard1(), contentPane, room);
 							
 							//Esto no iria aca:
 //							playerActual.setCard1(playerActual.getCard2());
@@ -173,9 +176,9 @@ public class Room extends JFrame {
 //								player1.setTurn(true);
 //								playerActual = player1;
 //							}
+							 
+//							cambioTurno(playerActual, contentPane);
 							
-							
-							cambioTurno(playerActual, contentPane);
 
 						}
 					});
@@ -204,7 +207,7 @@ public class Room extends JFrame {
 							back.repaint();
 							game.getPlayerOnTurn().setPoints(6);
 							// Aca se llama
-							playCard(game, playerActual.getCard2(), contentPane);
+							playCard(game, playerActual.getCard2(), contentPane, room);
 							
 							//Esto no iria aca:
 //							playerActual.setCard2(null);
@@ -221,7 +224,7 @@ public class Room extends JFrame {
 //								playerActual = player1;
 //							}
 							
-							cambioTurno(playerActual, contentPane);
+//							cambioTurno(playerActual, contentPane);
 
 						}
 					});
@@ -337,6 +340,22 @@ public class Room extends JFrame {
 
 	}
 	
+	public void checkRoundGraphic(Game game, Container contentPane) {
+		
+		if(!game.activeGame()) {
+			JOptionPane.showMessageDialog(contentPane, "Finaizó la Partida", " ",JOptionPane.WARNING_MESSAGE );
+			//inicioRonda(playerActual);
+			//finPartida();
+			return;
+			
+		}
+		
+		game.checkRound();
+		cambioTurno(game.getPlayerOnTurn(), contentPane);
+		
+	}
+	
+	
 	private void cambioTurno(Player player, Container contentPane) {
 		playerActual = player;
 		
@@ -350,6 +369,7 @@ public class Room extends JFrame {
 		
 		refreshPantalla();
 	}
+	
 	
 	private void refreshPantalla() {
 		back.remove(cp1);
@@ -369,14 +389,14 @@ public class Room extends JFrame {
 		back.repaint();
 	}
 	
-	public void playCard(Game game, Card card, Container contentPane) {
+	public void playCard(Game game, Card card, Container contentPane, Room room) {
 		
 		if(card.getName() == "Guardia") {
 			
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						GraphicGuard frame2 = new GraphicGuard(game);
+						GraphicGuard frame2 = new GraphicGuard(game, room, contentPane);
 						frame2.setVisible(true);
 						
 					} catch (Exception e) {
@@ -386,11 +406,37 @@ public class Room extends JFrame {
 			});
 			
 
-		}else {
+		}
+		else {
+			if(game.getPlayerOnTurn().getCard1().getName() == card.getName()) {
+				game.getPlayerOnTurn().setCard1(game.getPlayerOnTurn().getCard2());
+				game.getPlayerOnTurn().setCard2(null);
+			}else {
+				game.getPlayerOnTurn().setCard2(null);
+			}
+			game.setTurn();
+			
+			room.checkRoundGraphic(game, contentPane);
 			
 		}
 		
+	}
+	
+	private void finPartida() {
+		back.remove(cp1);
+		back.remove(cp2);
 		
+		if (turn % 2 == 0) {
+			posCartasJugadasX = 300;
+			posCartasJugadasY = 300;			
+		}
+		else {
+			posCartasJugadasX = 300;
+			posCartasJugadasY = 160;	
+		}
+		
+		
+		back.repaint();
 	}
 	
 }
