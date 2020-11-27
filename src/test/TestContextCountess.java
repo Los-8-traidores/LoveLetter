@@ -27,10 +27,10 @@ public class TestContextCountess {
 		descarted = player1.getCard1();
 		
 		Context context = new ContextCountess(player1, player1.getCard1());
-		practiceGame.playCard(player1, context);//Juega la carta de la Condeza
+		practiceGame.playCard(player1, context, player1.getCard1());//Juega la carta de la Condeza
 		assertEquals(true, player2.isTurn());
 		
-		assertEquals("Príncipe", player1.getCard1().getName()); //descarta la condesa y queda con el rey
+		assertEquals("Principe", player1.getCard1().getName()); //descarta la condesa y queda con el rey
 		assertEquals("Condesa", descarted.getName());
 	} 
 }

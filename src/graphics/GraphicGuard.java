@@ -16,11 +16,10 @@ import model.Player;
 import cards.*;
 
 public class GraphicGuard extends JDialog {
+
+	private static final long serialVersionUID = -3449182262328049673L;
+
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel playersPanel;
 //	protected Player target;
 	
@@ -42,7 +41,7 @@ public class GraphicGuard extends JDialog {
 			players[i] = game.getPlayerList().get(i).getName();
 		}
 		for(int i = 0; i< game.getPlayerList().size(); i++) {
-			if(game.getPlayerList().get(i).isAlive() && game.getPlayerList().get(i) != game.getPlayerOnTurn()) {
+			if(game.getPlayerList().get(i).isAlive() && game.getPlayerList().get(i) != game.getPlayerOnTurn() && !game.getPlayerList().get(i).isProtected()) {
 				
 				JButton button = new JButton(players[i]);
 				button.setText(players[i]);
@@ -77,12 +76,12 @@ public class GraphicGuard extends JDialog {
 									game.playCard(game.getPlayerOnTurn(), context, guard);
 									
 									if(context.getAcierto()) {
-										JOptionPane.showMessageDialog(playersPanel, "Se eliminó al jugador: "+ button.getText(), "Hubo Acierto",JOptionPane.WARNING_MESSAGE );
+										JOptionPane.showMessageDialog(playersPanel, "Se eliminï¿½ al jugador: "+ button.getText(), "Hubo Acierto",JOptionPane.WARNING_MESSAGE );
 											room.checkRoundGraphic(game, contentPane);
 
 									}else {
 										
-										JOptionPane.showMessageDialog(playersPanel, "Nadie fué eliminado", "No Hubo Acierto",JOptionPane.WARNING_MESSAGE );
+										JOptionPane.showMessageDialog(playersPanel, "Nadie fuï¿½ eliminado", "No Hubo Acierto",JOptionPane.WARNING_MESSAGE );
 										room.checkRoundGraphic(game, contentPane);
 									}
 									

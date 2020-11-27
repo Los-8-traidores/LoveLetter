@@ -36,4 +36,8 @@ public abstract class Card {
 		return "card" + getName();
 	}
 	
+	public boolean isName (String name) {
+		return this.name.equals(name);
+	}
+	
 }

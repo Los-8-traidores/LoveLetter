@@ -21,7 +21,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import cards.Card;
+import cards.Handmaid;
+import context.Context;
 import context.ContextGuard;
+import context.ContextHandmaid;
 import model.*;
 import sound.Sound;
 
@@ -264,7 +267,7 @@ public class Room extends JFrame {
 //					back.add(cp);
 //				}
 //				else {
-//					JOptionPane.showMessageDialog(contentPane, "El maso esta vacío", "Fin de la partida",JOptionPane.WARNING_MESSAGE );
+//					JOptionPane.showMessageDialog(contentPane, "El maso esta vacï¿½o", "Fin de la partida",JOptionPane.WARNING_MESSAGE );
 //				}
 
 			}
@@ -296,7 +299,7 @@ public class Room extends JFrame {
 //					back.add(cp);
 //				}
 //				else {
-//					JOptionPane.showMessageDialog(contentPane, "El maso esta vacío", "Fin de la partida",JOptionPane.WARNING_MESSAGE );
+//					JOptionPane.showMessageDialog(contentPane, "El maso esta vacï¿½o", "Fin de la partida",JOptionPane.WARNING_MESSAGE );
 //				}
 				
 
@@ -343,7 +346,7 @@ public class Room extends JFrame {
 	public void checkRoundGraphic(Game game, Container contentPane) {
 		
 		if(!game.activeGame()) {
-			JOptionPane.showMessageDialog(contentPane, "Finaizó la Partida", " ",JOptionPane.WARNING_MESSAGE );
+			JOptionPane.showMessageDialog(contentPane, "Finaizï¿½ la Partida", " ",JOptionPane.WARNING_MESSAGE );
 			//inicioRonda(playerActual);
 			//finPartida();
 			return;
@@ -391,12 +394,35 @@ public class Room extends JFrame {
 	
 	public void playCard(Game game, Card card, Container contentPane, Room room) {
 		
-		if(card.getName() == "Guardia") {
-			
+		if(card.isName("Guardia")) {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
 						GraphicGuard frame2 = new GraphicGuard(game, room, contentPane);
+						frame2.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+			
+
+		}else if (card.isName("Sacerdote")) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						GraphicPriest frame2 = new GraphicPriest(game, room, contentPane);
+						frame2.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}else if(card.isName("Baron")) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						GraphicBaron frame2 = new GraphicBaron(game, room, contentPane);
 						frame2.setVisible(true);
 						
 					} catch (Exception e) {
@@ -405,7 +431,18 @@ public class Room extends JFrame {
 				}
 			});
 			
-
+		}else if (card.isName("Mucama")) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						GraphicHandmaid frame2 = new GraphicHandmaid(game, room, contentPane);
+						frame2.setVisible(true);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
 		}
 		else {
 			if(game.getPlayerOnTurn().getCard1().getName() == card.getName()) {
