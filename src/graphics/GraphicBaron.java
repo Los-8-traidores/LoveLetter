@@ -1,11 +1,13 @@
 package graphics;
 
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,9 +19,11 @@ import cards.*;
 
 public class GraphicBaron extends JDialog {
 	
-	private static final long serialVersionUID = 434544119756910629L;
+	private static final long serialVersionUID = -1385653198271283189L;
 
 	private JPanel playersPanel;
+	
+	private static Font enchantedFont = MyFont.createFont();
 
 	
 	public GraphicBaron(Game game, Room room, Container contentPane) {
@@ -32,6 +36,7 @@ public class GraphicBaron extends JDialog {
 		setContentPane(playersPanel);
 		playersPanel.setLayout(null);
 		int offset=0;
+		int cont = 0;
 		String players[] = new String [4];
 		
 		for(int i = 0; i< game.getPlayerList().size(); i++) {
@@ -56,16 +61,21 @@ public class GraphicBaron extends JDialog {
 						playersPanel.repaint();
 
 						Player target = obtainPlayer(game, targetName);
+						Player onTurn = game.getPlayerOnTurn();
 						
 						Card baron = new Baron();
-						ContextBaron context = new ContextBaron(game.getPlayerOnTurn(), target, baron);
-						game.playCard(game.getPlayerOnTurn(), context, baron);
+						ContextBaron context = new ContextBaron(onTurn, target, baron);
+						
+						game.playCard(onTurn, context, baron);
+						
 						if(!target.isAlive()){
 							JOptionPane.showMessageDialog(playersPanel, "Se elimina al jugador: "+ button.getText(), "Tu carta era mayor",JOptionPane.WARNING_MESSAGE );
 								room.checkRoundGraphic(game, contentPane);
-
-						}else if(!game.getPlayerOnTurn().isAlive()){
+						}else if(!onTurn.isAlive()){
 							JOptionPane.showMessageDialog(playersPanel, "Fuiste eliminado", "Tu carta era menor",JOptionPane.WARNING_MESSAGE );
+							room.checkRoundGraphic(game, contentPane);
+						}else {
+							JOptionPane.showMessageDialog(playersPanel, "Nadie fue eliminado", "Las cartas eran iguales",JOptionPane.WARNING_MESSAGE );
 							room.checkRoundGraphic(game, contentPane);
 						}
 
@@ -87,7 +97,33 @@ public class GraphicBaron extends JDialog {
 				playersPanel.add(button);
 				offset+=120;
 
+				cont++;
 			}
+		}
+		
+		if (cont == 0) {
+			JLabel label = new JLabel("No hay jugadores para elegir");
+			label.setBounds(10, 100, 200, 100);
+			contentPane.add(label);
+			label.setFont(enchantedFont);
+			playersPanel.add(label);
+
+			JButton bOk = new JButton();
+			bOk.setText("Ok");
+			bOk.setVisible(true);
+			bOk.setBounds(10, 200, 200, 100);
+
+			bOk.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					game.setTurn();
+					room.checkRoundGraphic(game, contentPane);
+					dispose();
+				}
+			});
+
+			playersPanel.add(bOk);
 		}
 	}
 }

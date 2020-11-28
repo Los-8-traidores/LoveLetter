@@ -7,19 +7,23 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import cards.Card;
 import cards.Handmaid;
+import cards.Princess;
 import context.ContextHandmaid;
+import context.ContextPrincess;
 import model.Game;
+import model.Player;
 
-public class GraphicHandmaid extends JDialog{
+public class GraphicPrincess extends JDialog{
 
-	private static final long serialVersionUID = -5147301925662008944L;
-
+	private static final long serialVersionUID = 1816297503220369796L;
+	
 	private static Font enchantedFont = MyFont.createFont();
 	private JPanel playersPanel;
 
 	
-	public GraphicHandmaid(Game game, Room room, Container contentPane) {
+	public GraphicPrincess(Game game, Room room, Container contentPane) {
 //		setTitle("Mucama");
 //		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 //		setBounds(350, 100, 450, 400);
@@ -42,11 +46,14 @@ public class GraphicHandmaid extends JDialog{
 		
 		
 		//Falla, creemos que es porque no le refresca el estado a desprotegido cuando arranca la siguiente mano
-		JOptionPane.showMessageDialog(playersPanel, "Ahora estas protegido hasta tu siguiente turno" , "Estas protegido!",JOptionPane.WARNING_MESSAGE );
+		JOptionPane.showMessageDialog(playersPanel, "Has sido eliminado" , "Perdiste",JOptionPane.WARNING_MESSAGE );
 		dispose();
 		
-		ContextHandmaid context = new ContextHandmaid(game.getPlayerOnTurn());
-		game.playCard(game.getPlayerOnTurn(), context, new Handmaid());
+		Card princess = new Princess();
+		Player onTurn = game.getPlayerOnTurn();
+		
+		ContextPrincess context = new ContextPrincess(onTurn, princess);
+		game.playCard(onTurn, context, princess);
 
 		room.checkRoundGraphic(game, contentPane);
 		

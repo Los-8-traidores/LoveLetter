@@ -11,21 +11,21 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import cards.Priest;
-import context.ContextPriest;
+import context.ContextKing;
 import model.Game;
 import model.Player;
+import cards.*;
 
-public class GraphicPriest extends JDialog{
-	
-	
-	private static final long serialVersionUID = -5909258688050224976L;
-	
+public class GraphicKing extends JDialog {
+
+	private static final long serialVersionUID = 5788526051670720569L;
+
 	private JPanel playersPanel;
 	
 	private static Font enchantedFont = MyFont.createFont();
+
 	
-	public GraphicPriest(Game game, Room room, Container contentPane) {
+	public GraphicKing(Game game, Room room, Container contentPane) {
 		setTitle("Elige un Juagdor");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(350, 100, 450, 400);
@@ -52,13 +52,17 @@ public class GraphicPriest extends JDialog{
 				button.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						String targetName = button.getText();
-						setTitle("La carta de " + targetName + " es:");
+						setTitle("Tu nueva carta es:");
 						setBounds(350, 100, 450, 400);
 						playersPanel.removeAll();
 						playersPanel.repaint();
 						
 						JButton oponentCard = new JButton();
 						Player target = obtainPlayer(game, targetName);
+						Player onTurn = game.getPlayerOnTurn();
+						
+						Card king = new King();
+						ContextKing context = new ContextKing(onTurn, target, king);
 						
 						
 						oponentCard.setText(target.getCard1().getName());
@@ -68,8 +72,7 @@ public class GraphicPriest extends JDialog{
 						
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								//Ver si podemos mejorar todo y ademas usar el ContextPriest
-								game.playCard(game.getPlayerOnTurn(), new ContextPriest(target), new Priest());
+								game.playCard(onTurn, context, king);
 								room.checkRoundGraphic(game, contentPane);
 								dispose();
 								
@@ -91,14 +94,11 @@ public class GraphicPriest extends JDialog{
 				
 				playersPanel.add(button);
 				offset+=120;
-				
+
 				cont++;
-				
-				
 			}
 		}
 		
-		//Esto es en caso de que no haya jugadores disponibles para seleccionar
 		if (cont == 0) {
 			JLabel label = new JLabel("No hay jugadores para elegir");
 			label.setBounds(10, 100, 200, 100);
@@ -123,5 +123,5 @@ public class GraphicPriest extends JDialog{
 
 			playersPanel.add(bOk);
 		}
-	}	
+	}
 }

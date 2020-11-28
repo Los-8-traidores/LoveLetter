@@ -21,7 +21,7 @@ public class ContextBuilder {
 		}
 		
 		if(card.isName("Mucama")) {
-			context = new ContextHandmaid(playerOnTurn, playerTarget, card, guess);
+			context = new ContextHandmaid(playerOnTurn);
 			return;
 		}
 		

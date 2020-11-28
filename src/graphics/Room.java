@@ -3,28 +3,17 @@ package graphics;
 import java.awt.Container;
 import java.awt.EventQueue;
 
-import java.awt.Graphics2D;
 
 import java.awt.Font;
 
-import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import cards.Card;
-import cards.Handmaid;
-import context.Context;
-import context.ContextGuard;
-import context.ContextHandmaid;
 import model.*;
 import sound.Sound;
 
@@ -235,7 +224,7 @@ public class Room extends JFrame {
 				}
 
 				else {
-					JOptionPane.showMessageDialog(contentPane, "No vale cartearse", "",JOptionPane.WARNING_MESSAGE );
+					JOptionPane.showMessageDialog(contentPane, "No vale cartearse", "No hagas trampa!",JOptionPane.WARNING_MESSAGE );
 				}
 
 			}
@@ -346,7 +335,7 @@ public class Room extends JFrame {
 	public void checkRoundGraphic(Game game, Container contentPane) {
 		
 		if(!game.activeGame()) {
-			JOptionPane.showMessageDialog(contentPane, "Finaiz� la Partida", " ",JOptionPane.WARNING_MESSAGE );
+			JOptionPane.showMessageDialog(contentPane, "Finalizó la Partida", "The End",JOptionPane.WARNING_MESSAGE );
 			//inicioRonda(playerActual);
 			//finPartida();
 			return;
@@ -405,8 +394,6 @@ public class Room extends JFrame {
 					}
 				}
 			});
-			
-
 		}else if (card.isName("Sacerdote")) {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
@@ -436,6 +423,31 @@ public class Room extends JFrame {
 				public void run() {
 					try {
 						GraphicHandmaid frame2 = new GraphicHandmaid(game, room, contentPane);
+						frame2.setVisible(true);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+		else if (card.isName("Rey")) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						GraphicKing frame2 = new GraphicKing(game, room, contentPane);
+						frame2.setVisible(true);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}else if (card.isName("Princesa")) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						GraphicPrincess frame2 = new GraphicPrincess(game, room, contentPane);
 						frame2.setVisible(true);
 						
 					} catch (Exception e) {
