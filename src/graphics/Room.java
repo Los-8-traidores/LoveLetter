@@ -394,7 +394,8 @@ public class Room extends JFrame {
 					}
 				}
 			});
-		}else if (card.isName("Sacerdote")) {
+		}
+			else if (card.isName("Sacerdote")) {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
@@ -418,19 +419,20 @@ public class Room extends JFrame {
 				}
 			});
 			
-		}else if (card.isName("Mucama")) {
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						GraphicHandmaid frame2 = new GraphicHandmaid(game, room, contentPane);
-						frame2.setVisible(true);
-						
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			});
 		}
+//		else if (card.isName("Mucama")) {
+//			EventQueue.invokeLater(new Runnable() {
+//				public void run() {
+//					try {
+//						GraphicHandmaid frame2 = new GraphicHandmaid(game, room, contentPane);
+//						frame2.setVisible(true);
+//						
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			});
+//		}
 		else if (card.isName("Rey")) {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
@@ -456,7 +458,20 @@ public class Room extends JFrame {
 				}
 			});
 		}
-		else {
+//		else if (card.isName("Principe")) {
+//			EventQueue.invokeLater(new Runnable() {
+//				public void run() {
+//					try {
+//						GraphicPrince frame2 = new GraphicPrince(game, room, contentPane);
+//						frame2.setVisible(true);
+//						
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			});
+//		}
+	else {
 			if(game.getPlayerOnTurn().getCard1().getName() == card.getName()) {
 				game.getPlayerOnTurn().setCard1(game.getPlayerOnTurn().getCard2());
 				game.getPlayerOnTurn().setCard2(null);

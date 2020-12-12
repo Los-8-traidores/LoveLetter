@@ -154,7 +154,7 @@ public class Game {
 
 	private void endGame(Player player) {
 		gameEnabled = false;
-		System.out.println("Partida finalizada, ganó: " + player.getName());
+		System.out.println("Partida finalizada, ganï¿½: " + player.getName());
 	}
 	
 	public void grabCard(Player player) {
@@ -183,5 +183,9 @@ public class Game {
 
 	public Player getPlayerOnTurn() {
 		return playerOnTurn;
+	}
+	
+	public Deck getDeck() {
+		return deck;
 	}
 }

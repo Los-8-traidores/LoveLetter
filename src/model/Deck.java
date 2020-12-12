@@ -19,24 +19,25 @@ public class Deck {
     }
 
 	public void fillDeck(){
+		int i = 0;
 		//5 guards
-        for(int i=0; i<5; i++)
+        for(; i<5; i++)
         	cards[i] = new Guard();
 
         //2 priests
-        for(int i=5; i<7; i++)
+        for(; i<7; i++)
         	cards[i] = new Priest();
 
         //2 Barons
-        for(int i=7; i<9; i++)
+        for(; i<9; i++)
             cards[i] = new Baron();
 
         //2 Handmaids
-        for(int i=9; i<11; i++)
+        for(; i<11; i++)
             cards[i] = new Handmaid();
 
         //2 princes
-        for(int i=11; i<13; i++)
+        for(; i<13; i++)
             cards[i] = new Prince();
 
         //1 King, Countess and Princess
